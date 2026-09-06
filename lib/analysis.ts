@@ -1,4 +1,4 @@
-export type Scene = {name:string;data:string;mime:string;label:string};
+export type Scene = {name:string;data:string;mime:string;label:string;width?:number;height?:number;bytes?:number};
 export type Evidence = {title:string;detail:string;image:number;box:number[]};
 export type Analysis = {answer:string;approach:string[];evidence:Evidence[];limitations:string[];confidence:string;source:string};
 export function sampleAnalysis(question:string):Analysis {
@@ -8,5 +8,5 @@ export function sampleAnalysis(question:string):Analysis {
 export function validateAnalysis(value:unknown):Omit<Analysis,'source'> {
  const v=value as Analysis;
  if(!v || typeof v.answer!=='string'||!Array.isArray(v.evidence)||!Array.isArray(v.approach)||!Array.isArray(v.limitations))throw Error('The model returned an incomplete analysis. Try a more specific question.');
- return {answer:v.answer.slice(0,10000),approach:v.approach.filter(x=>typeof x==='string').slice(0,6),limitations:v.limitations.filter(x=>typeof x==='string').slice(0,8),confidence:typeof v.confidence==='string'?v.confidence:'Not calibrated',evidence:v.evidence.filter(x=>x&&typeof x.title==='string'&&typeof x.detail==='string'&&[0,1].includes(x.image)&&Array.isArray(x.box)&&x.box.length===4&&x.box.every(n=>Number.isFinite(n)&&n>=0&&n<=100)&&x.box[0]<x.box[2]&&x.box[1]<x.box[3]).slice(0,6)};
+ return {answer:v.answer.slice(0,10000),approach:v.approach.filter(x=>typeof x==='string').slice(0,6),limitations:v.limitations.filter(x=>typeof x==='string').slice(0,8),confidence:typeof v.confidence==='string'?v.confidence:'Not calibrated',evidence:v.evidence.filter(x=>x&&typeof x.title==='string'&&typeof x.detail==='string'&&Number.isInteger(x.image)&&x.image>=0&&x.image<6&&Array.isArray(x.box)&&x.box.length===4&&x.box.every(n=>Number.isFinite(n)&&n>=0&&n<=100)&&x.box[0]<x.box[2]&&x.box[1]<x.box[3]).slice(0,6)};
 }
