@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import ts from 'typescript';
+const compile=path=>ts.transpileModule(fs.readFileSync(path,'utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const moduleURL=source=>'data:text/javascript;base64,'+Buffer.from(source).toString('base64');
+const analysisURL=moduleURL(compile('lib/analysis.ts'));
+const {sampleAnalysis,validateAnalysis}=await import(analysisURL);
+const {POST}=await import(moduleURL(compile('app/api/analyze/route.ts').replace("'@/lib/analysis'",JSON.stringify(analysisURL))));
+const request=body=>new Request('http://localhost/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+const valid={key:'test-key',model:'gemini-2.5-flash',question:'What is visible?',mode:'observe',scenes:[{name:'Scene',label:'Optical',mime:'image/png',data:'aGVsbG8='}]};
+test('Sample refuses unsupported temporal and quantitative claims',()=>{assert.match(sampleAnalysis('What changed?').answer,/cannot establish change/);assert.match(sampleAnalysis('Calculate NDVI').answer,/cannot be derived/);});
+test('Evidence validation removes malformed and out-of-frame boxes',()=>{const r=sampleAnalysis('Water?');r.evidence.push({title:'bad',detail:'bad',image:0,box:[90,0,10,100]});assert.equal(validateAnalysis(r).evidence.length,3);assert.throws(()=>validateAnalysis({answer:'bad'}));});
+test('Missing credentials, missing pair, and bad MIME are rejected before provider calls',async()=>{assert.equal((await POST(request({...valid,key:''}))).status,400);assert.equal((await POST(request({...valid,mode:'compare'}))).status,400);assert.equal((await POST(request({...valid,scenes:[{...valid.scenes[0],mime:'image/tiff'}]}))).status,400);});
+test('Live adapter forwards imagery and validates returned evidence',async()=>{const saved=globalThis.fetch;try{let sent;globalThis.fetch=async(url,options)=>{sent=JSON.parse(options.body);assert.match(url,/generateContent$/);return Response.json({candidates:[{content:{parts:[{text:JSON.stringify(sampleAnalysis('Water?'))}]}}]});};const response=await POST(request(valid));assert.equal(response.status,200);const r=await response.json();assert.match(r.source,/Gemini/);assert.equal(sent.contents[0].parts[1].inlineData.data,valid.scenes[0].data);assert.equal(r.evidence.length,3);}finally{globalThis.fetch=saved;}});
+test('Provider quota failures stay visible and never fall back to demo findings',async()=>{const saved=globalThis.fetch;try{globalThis.fetch=async()=>Response.json({error:'provider secret'},{status:429});const r=await POST(request(valid));assert.equal(r.status,502);const body=await r.json();assert.match(body.error,/quota/);assert.equal(body.answer,undefined);}finally{globalThis.fetch=saved;}});
