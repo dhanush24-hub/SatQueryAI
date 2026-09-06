@@ -1,0 +1,15 @@
+export const capabilities=['scene_understanding','temporal_comparison','optical_analysis','sar_analysis','cross_sensor_analysis','visual_grounding','uncertainty_check','evidence_validation','synthesis'] as const;
+export type WorkflowCapability=typeof capabilities[number];
+export type Strength='high'|'medium'|'low';
+export type Provenance='provided'|'inferred'|'unknown';
+export type WorkflowStep={id:string;capability:WorkflowCapability;title:string;reason:string;inputImageIds:string[];dependencies:string[];status:'pending'|'running'|'completed'|'blocked'|'skipped'};
+export type ImageRelationship={imageA:string;imageB:string;relationship:'temporal'|'cross_sensor'|'same_scene'|'possibly_unrelated'|'unknown';confidence:Strength;basis:string[];verified:boolean;earlierImageId?:string};
+export type InputAssessment={image:number;imageId:string;sensor:string;sensorKind:'optical'|'sar'|'unknown';sensorSource:Provenance;date:string;dateSource:Provenance;assessment:string};
+export type EvidenceItem={id:string;imageId:string;findingId:string;evidenceType:'visual_region'|'temporal_difference'|'cross_sensor_support';description:string;region?:{x:number;y:number;width:number;height:number};reliability:Strength;limitations:string[];sourceStep:string};
+export type Finding={id:string;title:string;statement:string;classification:'observation'|'likely_interpretation'|'uncertain';evidenceIds:string[];confidence:{level:Strength;meaning:string};alternativeExplanations:string[];limitations:string[];category:string};
+export type EvidenceValidation={findingId:string;verdict:'supported'|'partially_supported'|'insufficient'|'conflicting';reasons:string[];recommendation?:string};
+export type CrossSensorAssessment={finding:string;relationship:'agreement'|'complementary'|'disagreement'|'inconclusive';explanation:string;evidenceIds:string[]};
+export type CandidateBundle={findings:Finding[];evidenceItems:EvidenceItem[];crossSensorAssessment:CrossSensorAssessment[]};
+export type ExecutionTrace={timestamp:string;stepId:string;step:string;purpose:string;inputs:string[];provider:string;status:'running'|'completed'|'blocked'|'skipped'|'failed';summary:string};
+export type MissionResult=CandidateBundle&{validations:EvidenceValidation[];directAnswer:string;uncertainties:string[];nextQuestion:string;trace:ExecutionTrace[];source:string;workflow:WorkflowStep[]};
+export type MissionContext={question:string;history:{role:string;text:string}[];previousResult?:MissionResult;previousPlan?:unknown};

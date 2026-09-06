@@ -1,0 +1,1 @@
+export default `Extract optical evidence independently. Describe visible colors, geometry, water-like surfaces, obscuration, vegetation and structures. Do not use radar evidence to bias this stage. Distinguish visual observations from flood/land-use interpretations. RGB alone cannot establish NDVI, depth, calibrated area or vegetation health.`;
