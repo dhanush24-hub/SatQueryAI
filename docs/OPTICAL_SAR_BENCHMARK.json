@@ -1,0 +1,64 @@
+{
+  "benchmark_timestamp": "2026-09-09T18:28:38Z",
+  "dataset": "Standardized Multi-Sensor Optical+SAR Water Benchmark (Held-out 40 tiles)",
+  "task": "Multi-Sensor Surface Water Delineation & Atmospheric Robustness",
+  "held_out_tile_count": 40,
+  "overall_metrics": {
+    "optical_only": {
+      "precision": 0.9351,
+      "recall": 1.0,
+      "f1": 0.9665,
+      "iou": 0.9351,
+      "tp": 221394,
+      "fp": 15366,
+      "fn": 0
+    },
+    "sar_only": {
+      "precision": 0.9842,
+      "recall": 0.9937,
+      "f1": 0.9889,
+      "iou": 0.9781,
+      "tp": 220003,
+      "fp": 3537,
+      "fn": 1391
+    },
+    "fused": {
+      "precision": 0.9954,
+      "recall": 0.9937,
+      "f1": 0.9945,
+      "iou": 0.9891,
+      "tp": 220003,
+      "fp": 1025,
+      "fn": 1391
+    }
+  },
+  "cloud_degraded_subset_metrics": {
+    "optical_only": {
+      "precision": 0.8625,
+      "recall": 1.0,
+      "f1": 0.9262,
+      "iou": 0.8625,
+      "tp": 96369,
+      "fp": 15366,
+      "fn": 0
+    },
+    "sar_only": {
+      "precision": 0.9898,
+      "recall": 0.9938,
+      "f1": 0.9918,
+      "iou": 0.9837,
+      "tp": 95768,
+      "fp": 984,
+      "fn": 601
+    },
+    "fused": {
+      "precision": 0.9898,
+      "recall": 0.9938,
+      "f1": 0.9918,
+      "iou": 0.9837,
+      "tp": 95768,
+      "fp": 984,
+      "fn": 601
+    }
+  }
+}

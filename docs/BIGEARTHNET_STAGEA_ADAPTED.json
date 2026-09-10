@@ -1,0 +1,46 @@
+{
+  "evaluation_timestamp": "2026-09-10T01:35:27Z",
+  "base_model": "Salesforce/blip-vqa-base",
+  "adapter_path": "models/satquery_rs_vlm_v1/checkpoint",
+  "adaptation_status": "Stage A: S2-RGB PEFT LoRA Adapted",
+  "split": "bench",
+  "benchmark_sample_count": 356,
+  "failures_or_unavailable": 0,
+  "overall_binary_accuracy": 0.4972,
+  "category_accuracy": {
+    "presence": 0.2941,
+    "area": 0.5942,
+    "count": 0.4746,
+    "adjacency": 0.5254
+  },
+  "category_counts": {
+    "presence": {
+      "total": 51,
+      "correct": 15
+    },
+    "area": {
+      "total": 69,
+      "correct": 41
+    },
+    "count": {
+      "total": 59,
+      "correct": 28
+    },
+    "adjacency": {
+      "total": 177,
+      "correct": 93
+    }
+  },
+  "ground_truth_balance": {
+    "yes": 202,
+    "no": 154
+  },
+  "prediction_balance": {
+    "yes": 67,
+    "no": 289,
+    "other": 0
+  },
+  "format_compliance_rate": 1.0,
+  "mean_latency_ms": 179.8,
+  "total_evaluation_time_sec": 64.38
+}

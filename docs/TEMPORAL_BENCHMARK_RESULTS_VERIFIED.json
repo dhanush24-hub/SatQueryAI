@@ -1,0 +1,21 @@
+{
+  "benchmark_dataset": "ericyu/LEVIRCD_Cropped256",
+  "split": "validation",
+  "split_file": "data/val-00000-of-00001-d09d88a7419f2427.parquet",
+  "num_evaluated_pairs": 50,
+  "threshold": 0.5,
+  "threshold_source": "fixed_default_not_tuned_on_validation",
+  "preprocessing": "imagenet_mean_std_normalization",
+  "checkpoint": "HZDR-FWGEL/UCD-LEVIRCD256-SiamUDiff",
+  "device": "mps",
+  "seed": "sequential_rows_0_to_N-1_no_shuffle",
+  "true_positives": 99,
+  "false_positives": 4580,
+  "false_negatives": 124016,
+  "true_negatives": 3148105,
+  "precision": 0.0212,
+  "recall": 0.0008,
+  "f1_score": 0.0015,
+  "iou": 0.0008,
+  "mean_inference_latency_ms": 15.6
+}

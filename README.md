@@ -1,68 +1,312 @@
-# SatQuery AI — Alpha Logic / SIH 2026 / PS 26167
+# SatQuery AI
 
-SatQuery turns imagery plus a natural-language question into an automatically composed, evidence-reviewed analysis. Users never choose Observe, Compare or Fuse. The existing private Site and landing/workspace are preserved.
+**SIH 2026 · Problem Statement PS-26167**
 
-## Current prototype architecture
+SatQuery is an AI-powered satellite image analysis system that converts natural-language questions about satellite imagery into structured, evidence-gated geospatial intelligence. It targets earth-observation workflows for flood mapping, urban change detection, land-cover classification, and multi-sensor optical+SAR fusion.
 
-Images → input assessment → SatQuery planner → deterministic capability composition → replaceable Gemini capability adapters → grounding review → uncertainty review → evidence gate → synthesis from gated findings.
+---
 
-`lib/domain.ts` defines workflow capabilities/steps, relationship assessments, first-class findings, evidence, verdicts and execution events. `lib/workflow.ts` composes a bounded, dependency-ordered executable plan from interpreted intent and image relationships. The planner does not produce final findings.
+## Overview
 
-`lib/registry.ts` exposes capability/provider interfaces and a registry. Dedicated prompt modules cover scene, temporal, optical, SAR display, cross-sensor, grounding, uncertainty, validation and synthesis. Gemini is a temporary provider behind this interface, not the product architecture. Each selected capability performs its own actual request. The executor dispatches steps, validates responses, enforces the evidence gate and emits NDJSON status events as the requests complete. A provider error stops the pipeline; it never substitutes demo findings.
+| Layer | Technology |
+|-------|-----------|
+| Frontend | Next.js 15, React 19, Tailwind CSS, shadcn/ui |
+| Backend | FastAPI (Python 3.12), SQLite, Rasterio, PyTorch |
+| Orchestration | Multi-step planner → evidence gate → synthesis |
+| Temporal Change | AttentionChangeNet, FC-EF, SiamUNet-Diff (LEVIR-CD) |
+| Optical+SAR Fusion | Cross-modal alignment + disagreement scoring |
+| Multi-label Classification | Experimental BigEarthNet.txt (Stage 8.5B/8.6 — ongoing) |
 
-The pipeline can compose multiple capabilities, sequential comparisons across three or more dated observations, and independent optical/radar extraction before cross-sensor comparison. A description of unrelated images needs no relationship or acquisition metadata. Temporal questions need order and scene suitability. Sensor-specific questions need identified inputs. Provided metadata is never labeled independently verified; filenames and visual sensor guesses remain inferences.
+---
 
-## Evidence and uncertainty
+## Key Capabilities
 
-Findings separate observations, likely interpretations and uncertainty. Every evidence ID must exist, be linked to its finding, and refer to an available image. Percentage regions must stay in bounds. Grounding remains approximate, not segmentation.
+- **Natural-language querying** — no mode-select; intent is automatically classified
+- **Temporal change detection** — pixel-level change maps with confidence and uncertainty
+- **Optical + SAR fusion** — agreement/disagreement scoring across sensor modalities
+- **Evidence gate** — every finding is classified as supported / partially-supported / insufficient / conflicting before synthesis
+- **Grounding** — approximate bounding regions linked to findings (not segmentation)
+- **PDF report generation** — self-contained analysis reports
+- **Demo missions** — Cairo, Florence, Sundarbans running through the live evidence pipeline
 
-Every candidate gets a gate verdict: supported, partially supported, insufficient or conflicting. Missing visual grounding and missing temporal counterpart evidence prevent support. Low support is downgraded; explicit sensor disagreement forces a conflicting verdict. Failed evidence is retained as uncertain with reasons and requests for better observations, not silently promoted. Final synthesis follows the gate. No-support results are forced to abstain. Gemini reviews are repeated reasoning by the same provider, **not independent scientific validation**.
+---
 
-## Mission interaction
+## Architecture
 
-- Upload 1–6 PNG/JPEG/WebP files, at most 5 MB each / 10 MB total.
-- Browser decoding and dimensions checks; server signatures, limits and duplicate validation.
-- Optional image context accepts dates, sensor and location. No mode selection.
-- Missing material context prompts a clarification; the original question and images remain in the mission.
-- Follow-ups pass prior relationships, findings, evidence and verdicts. Questions about alternatives run a review-only pipeline over existing candidates. High-support filtering uses existing finding/verdict data locally without a new model call.
-- Select a finding to see associated regions side by side. Switching images retains the corresponding selected finding reference.
-- The workflow panel explains intent, source provenance, relationships and actual step statuses. The trace names inputs, purpose, provider, timestamp, status and output summary.
-- Markdown export includes findings, verdicts, alternatives, evidence and the execution trace.
+```
+User Query + Images
+        │
+        ▼
+┌─────────────────────┐
+│   Intent Classifier  │  (task_classifier.py)
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│   Planner / Executor │  (planner.py, executor.py)
+│  (multi-step plan)   │
+└────────┬────────────┘
+         │
+   ┌─────┴──────────────────────┐
+   │ Specialist Services         │
+   │  • Geospatial preprocessing │  (rasterio, alignment)
+   │  • Temporal change models   │  (AttentionChangeNet, FC-EF, SiamUNet)
+   │  • Optical/SAR fusion       │  (optical_sar_fusion.py)
+   │  • VQA adapter              │  (vqa_adapter.py)
+   │  • Visual grounding         │  (grounding_adapter.py)
+   └─────────────────────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│   Evidence Assessor  │  (evidence_assessor.py)
+│  gate: supported /   │
+│  partial / conflict  │
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│  Result Integrator   │  → JSON response + PDF report
+└─────────────────────┘
+```
 
-## Demonstration missions
+Full architecture: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 
-Demos run curated fixture providers through the **same executor and deterministic evidence gate**. They are explicitly labeled curated, not live AI. They never fake specialist model execution.
+---
 
-1. **Cairo: a changing city** — Landsat optical acquisitions, 1984-07-02 and 2019-09-05. Apparent built-up expansion is paired with an uncertain vegetation-appearance candidate. A seasonal follow-up retains the existing evidence.
-2. **Florence: incomplete agreement** — a 2018-09-19 Landsat false-color optical view and a source-published 2018-09-14 Sentinel-1-derived ARIA flood proxy. Different dates and footprints prevent local cross-sensor confirmation. The proxy is not raw SAR and is not produced by SatQuery.
-3. **Sundarbans: read the landscape** — archival Landsat 7 mosaic, November 1999 / November 2000. A single display mosaic, not a temporal pair.
+## Current Implemented Scope
 
-Image attribution and source details are in `public/missions/PROVENANCE.md`. Cairo: NASA Earth Observatory / Lauren Dauphin, Landsat/USGS. Florence optical: Joshua Stevens, Landsat/USGS. Radar-derived map: Joshua Stevens and Lauren Dauphin; modified Copernicus Sentinel data (2018), ESA and NASA-JPL/Caltech ARIA. Sundarbans: Jesse Allen, University of Maryland Global Land Cover Facility.
+| Feature | Status |
+|---------|--------|
+| FastAPI backend with health/upload/analysis/jobs endpoints | ✅ Implemented |
+| SQLite analysis persistence and history | ✅ Implemented |
+| Temporal change detection (AttentionChangeNet) | ✅ Implemented + benchmarked |
+| Optical+SAR fusion with cross-modal alignment | ✅ Implemented |
+| Evidence gate with verdict classification | ✅ Implemented |
+| PDF report generation | ✅ Implemented |
+| Next.js frontend — workspace + mission UI | ✅ Implemented |
+| Demo missions (Cairo, Florence, Sundarbans) | ✅ Implemented |
+| BigEarthNet multi-label classification (Stage 8.5B) | ⚠️ Experimental / ongoing |
+| Prompt 8.6 RS-VQA fine-tuning | 🔄 Training in progress — results pending |
 
-## Gemini and privacy
+> **Scientific Honesty Note:** Prompt 8.6 training results are not yet finalized and are **not** reported here. Stage 8.5B BigEarthNet model performance remains experimental. Only the temporal change detection model (AttentionChangeNet, benchmarked on LEVIR-CD) has published held-out metrics — see [`docs/FINAL_HELDOUT_METRICS.json`](docs/FINAL_HELDOUT_METRICS.json).
 
-Use workspace settings for an API key and model name. The key remains in React memory, clears on refresh, and is sent through same-origin server endpoints to Google. This application does not durably store keys, imagery or conversations. Google processing policies still apply. Do not commit credentials.
+---
 
-Live multi-stage requests take longer and consume more provider quota than a single answer call. Each stage has a timeout and cancellation; errors remain visible. Live success has not been verified with an actual user key. Provider tests use mocks and deterministic fixture adapters.
+## Repository Structure
 
-## Target SatQuery architecture
+```
+satquery/
+├── app/                        # Next.js App Router pages and API routes
+│   ├── api/                    # Next.js server-side API handlers
+│   └── workspace/              # Main workspace page
+├── components/                 # React UI components
+│   └── ui/                     # shadcn/ui primitives
+├── lib/                        # Frontend logic and prompts
+│   ├── prompts/                # Modular analysis prompt templates
+│   └── api/                    # Backend API client
+├── hooks/                      # React hooks
+├── public/                     # Static assets and demo mission images
+│   └── missions/               # Demo fixture images + PROVENANCE.md
+│
+├── backend/                    # FastAPI Python backend
+│   ├── app/
+│   │   ├── api/routes/         # HTTP endpoints (analysis, health, jobs, uploads)
+│   │   ├── core/               # Config (pydantic-settings, env-driven)
+│   │   ├── db/                 # SQLite session and repositories
+│   │   ├── domain/             # Task and modality enums
+│   │   ├── registry/           # Model registry
+│   │   ├── schemas/            # Pydantic request/response models
+│   │   └── services/
+│   │       ├── geospatial/     # Rasterio preprocessing, SAR, alignment
+│   │       ├── models/         # AttentionChangeNet, FC-EF, SiamUNet, VQA
+│   │       ├── orchestration/  # Planner, executor, evidence gate
+│   │       ├── reporting/      # PDF generation
+│   │       └── storage/        # File storage abstraction
+│   ├── tests/                  # pytest test suite (86+ tests)
+│   └── requirements.txt
+│
+├── scripts/                    # Training, evaluation, audit scripts
+├── data/
+│   ├── manifests/              # Dataset split manifests (JSON, versioned)
+│   └── levircd/                # LEVIR-CD parquet splits (git-ignored, see below)
+├── models/
+│   └── satquery_change_v1/     # Trained change detection model metadata
+│       ├── attention_best.*    # Weights (git-ignored, download instructions below)
+│       └── provenance.json
+├── docs/                       # Scientific reports, validation, architecture
+├── storage/
+│   ├── fixtures/               # LEVIR demo sample images
+│   ├── scenario_*.tif          # Geospatial test fixtures
+│   └── test_*.tif / *.png      # Backend test fixtures
+├── tests/                      # Frontend unit tests
+│
+├── Dockerfile
+├── docker-compose.yml
+├── .env.example                # Environment template (copy to .env)
+├── next.config.ts
+├── package.json
+└── requirements.txt → backend/requirements.txt
+```
 
-Satellite data → geo-harmonization → SatQuery agent → specialist remote-sensing model registry → scene / temporal / optical-SAR analysis → evidence gate → re-plan if necessary → verifiable geospatial intelligence.
+---
 
-Future providers can implement scene VQA, change detection, real radar analysis, grounding/segmentation or independent validation without replacing workspace findings/evidence rendering. No fake future tools are implemented.
+## Setup
 
-Out of scope in this prototype: GeoTIFF/raw SAR parsing, GDAL, CRS transforms, real co-registration, segmentation, NDVI, calibrated confidence, quantitative area measurement, authentication, billing or generic GIS/SaaS features.
+### Prerequisites
 
-## Development and validation
+- Python 3.12+
+- Node.js 20+
+- `git`
 
-- `npm install`
-- `npm run dev`
-- `npm run build`
-- `npx tsc --noEmit`
-- `node --test tests/analysis.test.mjs`
+### 1. Clone
 
-Tests cover all 15 requested scenarios plus execution ordering, complete gate coverage, demo pipelines, source/signature guards, temporal counterpart grounding, conflicting evidence, provider failure and local follow-up filtering.
+```bash
+git clone https://github.com/<your-org>/satquery.git
+cd satquery
+```
 
-No browser interaction/visual QA or live Gemini success is claimed. The optional feature-detected WebMCP tool stages a question without submitting it; a supported WebMCP validation context was unavailable.
+### 2. Environment
 
-Reuse `.openai/hosting.json` and existing Sites project `appgprj_6a9d5e0b37b08191b3cad577a116a425`. Keep the parent `sources/` folder and reference PDFs read-only. Never persist source credential tokens.
+```bash
+cp .env.example .env
+# Edit .env:
+#   HF_TOKEN=<your huggingface token>
+#   GOOGLE_GEMINI_API_KEY=<your gemini key>
+#   DEVICE=cpu  # or cuda / mps
+```
+
+### 3. Backend
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+
+pip install -r backend/requirements.txt
+
+# Start backend
+PYTHONPATH=backend uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+Health check:
+```bash
+curl http://127.0.0.1:8000/health
+# {"status":"ok","service":"satquery-api","version":"0.1.0"}
+```
+
+Run tests:
+```bash
+cd backend
+PYTHONPATH=. pytest tests/ -v
+```
+
+### 4. Frontend
+
+```bash
+npm install
+npm run dev
+# → http://localhost:3000
+```
+
+TypeScript check:
+```bash
+npx tsc --noEmit
+```
+
+### 5. Docker (optional)
+
+```bash
+docker-compose up --build
+```
+
+---
+
+## Model Weights
+
+Large model weights are **not committed to git** (excluded by `.gitignore`).
+
+| Model | Location | Size | Download |
+|-------|----------|------|----------|
+| AttentionChangeNet | `models/satquery_change_v1/attention_best.safetensors` | 48 MB | See `models/satquery_change_v1/provenance.json` |
+| FC-EF | `models/satquery_change_v1/fc_ef_best.safetensors` | 7 MB | See provenance |
+| SiamUNet-Diff | `models/satquery_change_v1/siamunet_diff_best.safetensors` | 5 MB | See provenance |
+| RS-VLM LoRA adapter | `models/satquery_rs_vlm_v1/` | ~4 MB | See `models/satquery_rs_vlm_v1/provenance.json` |
+| RS-VQA (873 MB) | `models/satquery_rsvqa_v2/rs_cross_attention_vqa.pt` | 873 MB | See training manifest |
+
+---
+
+## Dataset Provenance
+
+| Dataset | Use | Status |
+|---------|-----|--------|
+| LEVIR-CD (HuggingFace) | Temporal change detection benchmark | ✅ Used, manifests committed |
+| BigEarthNet.txt (HuggingFace) | Multi-label land-cover classification | ⚠️ Experimental (Stage 8.5B/8.6) |
+
+LEVIR-CD split manifests are committed to `data/manifests/`. Parquet files (>50 MB) are git-ignored and reproducible via:
+```bash
+python scripts/acquire_stage8_6_dataset.py
+```
+
+---
+
+## Validation Summary
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| AttentionChangeNet F1 (LEVIR-CD held-out) | See `docs/FINAL_HELDOUT_METRICS.json` | Independently benchmarked |
+| FC-EF F1 (LEVIR-CD) | See `docs/CHANGE_MODEL_BENCHMARK.json` | |
+| BigEarthNet Stage 8.5B | Experimental — see `docs/BIGEARTHNET_STAGE8_5B_RECOVERY_REPORT.md` | ⚠️ Not a final model |
+| Prompt 8.6 (RS-VQA) | **Pending** — training in progress | Do not cite |
+
+> Gemini-based review steps within the pipeline are repeated reasoning by the same provider, **not independent scientific validation**.
+
+---
+
+## Known Limitations
+
+- Multi-label BigEarthNet classification (Stage 8.5B) is experimental; accuracy recovery is ongoing
+- Prompt 8.6 RS-VQA results are not yet available
+- Visual grounding is approximate bounding regions, not pixel-level segmentation
+- The frontend Gemini key is held in React memory only (no server-side persistence)
+- No authentication or multi-user session management in current prototype
+- GeoTIFF upload limited to ≤ 5 MB per image, ≤ 10 MB total per session
+
+---
+
+## Demo Flow
+
+1. Open `http://localhost:3000`
+2. Click a **Demo Mission** (Cairo, Florence, or Sundarbans) — no API key needed
+3. Or: upload your own GeoTIFF/JPEG/PNG files and add a Gemini API key in Settings
+4. Type a natural-language question (e.g., "Has urban area expanded between these dates?")
+5. View findings, evidence verdicts, and the execution trace
+6. Export as Markdown or download the PDF report
+
+---
+
+## Documentation
+
+| Document | Contents |
+|----------|----------|
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Full system architecture |
+| [`docs/FINAL_SYSTEM_VALIDATION.md`](docs/FINAL_SYSTEM_VALIDATION.md) | End-to-end validation results |
+| [`docs/FINAL_HELDOUT_METRICS.json`](docs/FINAL_HELDOUT_METRICS.json) | Held-out benchmark numbers |
+| [`docs/MODEL_PROVENANCE.md`](docs/MODEL_PROVENANCE.md) | Model training lineage |
+| [`docs/BIGEARTHNET_TXT_PROVENANCE.md`](docs/BIGEARTHNET_TXT_PROVENANCE.md) | BigEarthNet dataset sourcing |
+| [`docs/DEMO_SCENARIOS.md`](docs/DEMO_SCENARIOS.md) | Demo mission scenarios |
+| [`docs/OPTICAL_SAR_VALIDATION.md`](docs/OPTICAL_SAR_VALIDATION.md) | Optical+SAR fusion validation |
+| [`docs/DEPLOYMENT_RUNBOOK.md`](docs/DEPLOYMENT_RUNBOOK.md) | Production deployment guide |
+| [`public/missions/PROVENANCE.md`](public/missions/PROVENANCE.md) | Demo image attribution |
+
+---
+
+## Attribution
+
+SatQuery AI was developed for the **Smart India Hackathon 2026**, Problem Statement **PS-26167**.
+
+Demo mission images are sourced from NASA Earth Observatory and ESA Copernicus — attribution details in [`public/missions/PROVENANCE.md`](public/missions/PROVENANCE.md).
+
+---
+
+## License
+
+[MIT](LICENSE) — model weights may carry separate licenses from their upstream base models.

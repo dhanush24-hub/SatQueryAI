@@ -1,0 +1,6 @@
+Model,Architecture,Parameters,Preprocessing,Global Test Prec,Global Test Rec,Global Test F1,Global Test IoU,Macro Test F1,Calibrated Threshold,Production Status
+HZDR SiamUDiff,SiamUnet_diff,1354370,/255.0 + ImageNet,0.1659,0.0054,0.0105,0.0053,0.0088,0.50,Degenerate / Severe underprediction
+Analytical CVA,Spectral Magnitude,0,Reference [0-1] Stretched,0.0625,0.0774,0.0692,0.0358,0.0476,mu+2*sigma,Analytical Baseline (Non-trainable)
+Fine-Tuned SiamUnet_diff,SiamUnet_diff,1354370,/255.0 (Daudt),0.1009,0.6098,0.1732,0.0948,0.1239,0.20,Legacy Baseline
+FC-EF,Early Fusion U-Net,1944498,/255.0 (Daudt),0.1859,0.5525,0.2782,0.1616,0.1806,0.40,Legacy Baseline
+AttentionChangeNet,ResNet-18 + Spatial Diff Attention,12562474,/255.0 + ImageNet Norm,0.8732,0.8203,0.8459,0.7330,0.3286,0.50,SELECTED PRODUCTION WINNER (Exceeds 0.80 F1 / 0.67 IoU Target)

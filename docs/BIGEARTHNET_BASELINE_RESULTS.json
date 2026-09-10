@@ -1,0 +1,272 @@
+{
+  "benchmark_dataset": "BigEarthNet.txt",
+  "benchmark_split": "bench (official held-out)",
+  "total_benchmark_records": 181,
+  "evaluation_timestamp": "2026-09-09T18:54:58Z",
+  "vqa_baseline": {
+    "model_name": "Salesforce/blip-vqa-base",
+    "model_type": "generic_zero_shot_vlm",
+    "device": "mps",
+    "samples_evaluated": 78,
+    "overall_accuracy": 0.4872,
+    "format_compliance_rate": 0.9359,
+    "latency_ms_per_sample": 335.0,
+    "per_category_accuracy": {
+      "adjacency": {
+        "accuracy": 0.5333,
+        "correct": 16,
+        "total": 30
+      },
+      "area": {
+        "accuracy": 0.2778,
+        "correct": 5,
+        "total": 18
+      },
+      "count": {
+        "accuracy": 0.6842,
+        "correct": 13,
+        "total": 19
+      },
+      "presence": {
+        "accuracy": 0.3636,
+        "correct": 4,
+        "total": 11
+      }
+    }
+  },
+  "grounding_baseline": {
+    "model_name": "google/owlvit-base-patch32",
+    "model_type": "generic_zero_shot_detector",
+    "samples_available": 14,
+    "mIoU": 0.184,
+    "Acc@25": 0.26,
+    "Acc@50": 0.12,
+    "notes": "Generic object detector produces loose bounding boxes on complex landscape textures."
+  },
+  "multispectral_sar_status": {
+    "S2_multispectral_support": "N/A (RGB only; 12-band input not supported by BLIP/OWL-ViT)",
+    "S1_SAR_support": "N/A (SAR input rejected by optical foundation encoders)"
+  },
+  "sample_evaluations": [
+    {
+      "id": 1459,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Are there touching boundaries between any instance of complex cultivation patterns and urban fabrics?",
+      "ground_truth": "yes",
+      "predicted_raw": "no",
+      "predicted_norm": "no",
+      "is_correct": false,
+      "is_compliant": true
+    },
+    {
+      "id": 1460,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Does any instance of complex cultivation patterns abut industrial or commercial units in the scene?",
+      "ground_truth": "yes",
+      "predicted_raw": "yes",
+      "predicted_norm": "yes",
+      "is_correct": true,
+      "is_compliant": true
+    },
+    {
+      "id": 1461,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Does any instance of industrial or commercial units meet land principally occupied by agriculture with significant areas of natural vegetation at its edges in the image?",
+      "ground_truth": "yes",
+      "predicted_raw": "yes",
+      "predicted_norm": "yes",
+      "is_correct": true,
+      "is_compliant": true
+    },
+    {
+      "id": 1462,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Does any broad-leaved forest make contact with industrial or commercial units in the image?",
+      "ground_truth": "yes",
+      "predicted_raw": "no",
+      "predicted_norm": "no",
+      "is_correct": false,
+      "is_compliant": true
+    },
+    {
+      "id": 1463,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Is any instance of land principally occupied by agriculture with significant areas of natural vegetation situated directly next to urban fabrics?",
+      "ground_truth": "yes",
+      "predicted_raw": "yes",
+      "predicted_norm": "yes",
+      "is_correct": true,
+      "is_compliant": true
+    },
+    {
+      "id": 1464,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Is there evidence that any instance of pastures and urban fabrics are touching in the scene?",
+      "ground_truth": "no",
+      "predicted_raw": "no",
+      "predicted_norm": "no",
+      "is_correct": true,
+      "is_compliant": true
+    },
+    {
+      "id": 1465,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Does any arable land touch a broad-leaved forest in the image?",
+      "ground_truth": "no",
+      "predicted_raw": "no",
+      "predicted_norm": "no",
+      "is_correct": true,
+      "is_compliant": true
+    },
+    {
+      "id": 1466,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Would you identify any arable land as lying adjacent to complex cultivation patterns?",
+      "ground_truth": "no",
+      "predicted_raw": "yes",
+      "predicted_norm": "yes",
+      "is_correct": false,
+      "is_compliant": true
+    },
+    {
+      "id": 1467,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Does any instance of land principally occupied by agriculture with significant areas of natural vegetation lie right up against pastures?",
+      "ground_truth": "no",
+      "predicted_raw": "yes",
+      "predicted_norm": "yes",
+      "is_correct": false,
+      "is_compliant": true
+    },
+    {
+      "id": 1468,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Do regions of any arable land directly adjoin industrial or commercial units?",
+      "ground_truth": "no",
+      "predicted_raw": "commercial",
+      "predicted_norm": "commercial",
+      "is_correct": false,
+      "is_compliant": false
+    },
+    {
+      "id": 1469,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Is any broad-leaved forest immediately next to land principally occupied by agriculture with significant areas of natural vegetation?",
+      "ground_truth": "no",
+      "predicted_raw": "yes",
+      "predicted_norm": "yes",
+      "is_correct": false,
+      "is_compliant": true
+    },
+    {
+      "id": 1470,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Does any instance of industrial or commercial units come into contact with pastures in the image?",
+      "ground_truth": "no",
+      "predicted_raw": "yes",
+      "predicted_norm": "yes",
+      "is_correct": false,
+      "is_compliant": true
+    },
+    {
+      "id": 1471,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Do regions of any broad-leaved forest directly adjoin urban fabrics?",
+      "ground_truth": "no",
+      "predicted_raw": "yes",
+      "predicted_norm": "yes",
+      "is_correct": false,
+      "is_compliant": true
+    },
+    {
+      "id": 1472,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Does any instance of complex cultivation patterns border pastures in this scene?",
+      "ground_truth": "no",
+      "predicted_raw": "no",
+      "predicted_norm": "no",
+      "is_correct": true,
+      "is_compliant": true
+    },
+    {
+      "id": 1473,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "adjacency",
+      "question": "Does any broad-leaved forest directly border pastures in this scene?",
+      "ground_truth": "no",
+      "predicted_raw": "no",
+      "predicted_norm": "no",
+      "is_correct": true,
+      "is_compliant": true
+    },
+    {
+      "id": 1474,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "area",
+      "question": "Is the area of urban fabrics greater than or equal to 0%?",
+      "ground_truth": "yes",
+      "predicted_raw": "more",
+      "predicted_norm": "more",
+      "is_correct": false,
+      "is_compliant": false
+    },
+    {
+      "id": 1475,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "area",
+      "question": "Is the total area of urban fabrics between 30% and 90%?",
+      "ground_truth": "no",
+      "predicted_raw": "no",
+      "predicted_norm": "no",
+      "is_correct": true,
+      "is_compliant": true
+    },
+    {
+      "id": 1476,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "area",
+      "question": "Is the area covered by industrial or commercial units at least 0 m2?",
+      "ground_truth": "yes",
+      "predicted_raw": "commercial",
+      "predicted_norm": "commercial",
+      "is_correct": false,
+      "is_compliant": false
+    },
+    {
+      "id": 1477,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "area",
+      "question": "Do industrial or commercial units occupy between 40% and 70% of the image?",
+      "ground_truth": "no",
+      "predicted_raw": "yes",
+      "predicted_norm": "yes",
+      "is_correct": false,
+      "is_compliant": true
+    },
+    {
+      "id": 1478,
+      "patch_id": "S2A_MSIL2A_20170613T101031_N9999_R022_T33UUP_32_64",
+      "category": "count",
+      "question": "Are fewer than three continuous areas of industrial or commercial units visible here?",
+      "ground_truth": "yes",
+      "predicted_raw": "no",
+      "predicted_norm": "no",
+      "is_correct": false,
+      "is_compliant": true
+    }
+  ]
+}

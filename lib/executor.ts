@@ -7,6 +7,8 @@ function merge(a:CandidateBundle,b:CandidateBundle,prefix:string):CandidateBundl
  const f=(id:string)=>prefix+'-'+id,e=(id:string)=>prefix+'-'+id;
  return {findings:[...a.findings,...b.findings.map(x=>({...x,id:f(x.id),evidenceIds:x.evidenceIds.map(e)}))],evidenceItems:[...a.evidenceItems,...b.evidenceItems.map(x=>({...x,id:e(x.id),findingId:f(x.findingId)}))],crossSensorAssessment:[...a.crossSensorAssessment,...b.crossSensorAssessment.map(x=>({...x,evidenceIds:x.evidenceIds.map(e)}))]};
 }
+import {getIsroData} from './isro-data';
+
 export async function executePlan(context:Omit<ToolExecutionContext,'step'|'candidates'|'validations'>,emit:(event:PipelineEvent)=>void=()=>{},providers:CapabilityRegistry=registry):Promise<MissionResult>{
  const plan:WorkflowPlan=structuredClone(context.plan);assertExecutable(plan);
  let candidates:CandidateBundle=context.mission?.previousResult&&!plan.workflow.some(s=>['scene_understanding','temporal_comparison','optical_analysis','sar_analysis','cross_sensor_analysis'].includes(s.capability))?structuredClone({findings:context.mission.previousResult.findings,evidenceItems:context.mission.previousResult.evidenceItems,crossSensorAssessment:context.mission.previousResult.crossSensorAssessment}):{findings:[],evidenceItems:[],crossSensorAssessment:[]},validations:EvidenceValidation[]=[];
@@ -35,5 +37,8 @@ export async function executePlan(context:Omit<ToolExecutionContext,'step'|'cand
  step.status='completed';
  }catch(e){step.status='blocked';record('failed',e instanceof Error?e.message:'Provider response failed.');throw e;}
  }
- const result:MissionResult={...candidates,...final,validations,trace,source:'Gemini capability adapters · self-review, not independent validation',workflow:plan.workflow};emit({type:'result',result});return result;
+ // Curated demo telemetry is strictly bound to demo fixtures; user uploads remain undefined until verified GIS processing is executed
+ const demoKey = context.scenes.some(s=>s.name.includes('Cairo')) ? 'urban' : context.scenes.some(s=>s.name.includes('Florence')||s.name.includes('Trent')) ? 'flood' : context.scenes.some(s=>s.name.includes('Sundarbans')) ? 'single' : null;
+ const isroData = demoKey ? getIsroData(demoKey, context.scenes, candidates.findings, candidates.evidenceItems) : undefined;
+ const result:MissionResult={...candidates,...final,validations,trace,source:'Gemini capability adapters · self-review, not independent validation',workflow:plan.workflow,isroData};emit({type:'result',result});return result;
 }

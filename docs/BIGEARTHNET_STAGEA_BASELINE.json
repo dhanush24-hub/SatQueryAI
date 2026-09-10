@@ -1,0 +1,46 @@
+{
+  "evaluation_timestamp": "2026-09-09T19:15:41Z",
+  "model": "Salesforce/blip-vqa-base",
+  "adapter": null,
+  "adaptation_status": "Generic Zero-Shot (Pre-Adaptation Baseline)",
+  "split": "bench",
+  "benchmark_sample_count": 356,
+  "failures_or_unavailable": 0,
+  "overall_binary_accuracy": 0.5253,
+  "category_accuracy": {
+    "presence": 0.5294,
+    "area": 0.4928,
+    "count": 0.4915,
+    "adjacency": 0.548
+  },
+  "category_counts": {
+    "presence": {
+      "total": 51,
+      "correct": 27
+    },
+    "area": {
+      "total": 69,
+      "correct": 34
+    },
+    "count": {
+      "total": 59,
+      "correct": 29
+    },
+    "adjacency": {
+      "total": 177,
+      "correct": 97
+    }
+  },
+  "ground_truth_balance": {
+    "yes": 202,
+    "no": 154
+  },
+  "prediction_balance": {
+    "yes": 288,
+    "no": 48,
+    "other": 20
+  },
+  "format_compliance_rate": 0.9438,
+  "mean_latency_ms": 451.7,
+  "total_evaluation_time_sec": 161.92
+}

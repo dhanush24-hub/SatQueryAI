@@ -1,0 +1,99 @@
+{
+  "task": "Bi-Temporal Remote Sensing Optical Change Detection",
+  "dataset": "LEVIR-CD (ericyu/LEVIRCD_Cropped256)",
+  "benchmark_date": "2026-09-09",
+  "hardware": "Apple Silicon (MPS), 8GB Unified Memory",
+  "split_sizes": {
+    "train_rows": 7120,
+    "val_rows": 1024,
+    "test_rows": 2048
+  },
+  "candidate_models": [
+    {
+      "model_name": "HZDR SiamUDiff (Pretrained Checkpoint)",
+      "architecture": "SiamUnet_diff",
+      "provenance": "HZDR-FWGEL/UCD-LEVIRCD256-SiamUDiff",
+      "parameters": 1354370,
+      "val_samples_evaluated": 64,
+      "threshold": 0.50,
+      "metrics": {
+        "precision": 0.0172,
+        "recall": 0.0035,
+        "f1": 0.0054,
+        "iou": 0.0028
+      },
+      "status": "DEGENERATE_REJECTED",
+      "diagnostics": "Saturates at no-change (class 0) output logits; max probability for change is 0.1877 on sample with 4.6% GT change."
+    },
+    {
+      "model_name": "Analytical Change Vector Analysis (CVA)",
+      "architecture": "Euclidean spectral difference magnitude + adaptive 2-sigma thresholding",
+      "provenance": "In-repo analytical baseline",
+      "parameters": 0,
+      "val_samples_evaluated": 128,
+      "threshold": "adaptive (mu + 2*sigma)",
+      "metrics": {
+        "precision": 0.0726,
+        "recall": 0.0450,
+        "f1": 0.0453,
+        "iou": 0.0246
+      },
+      "status": "NON_TRIVIAL_BASELINE",
+      "diagnostics": "Spectral difference without spatial semantics; high false positive rate on illumination differences."
+    },
+    {
+      "model_name": "Fine-Tuned SiamUnet_diff",
+      "architecture": "Fully Convolutional Siamese Difference U-Net",
+      "provenance": "Daudt et al. ICIP 2018 (fine-tuned on LEVIR-CD train split)",
+      "parameters": 1354370,
+      "val_samples_evaluated": 128,
+      "threshold_calibrated": 0.20,
+      "metrics_val": {
+        "precision": 0.2700,
+        "recall": 0.3398,
+        "f1": 0.2790,
+        "iou": 0.1912
+      },
+      "status": "EVALUATED_VIABLE"
+    },
+    {
+      "model_name": "FC-EF (Early Fusion U-Net)",
+      "architecture": "Early Fusion 6-channel U-Net",
+      "provenance": "Daudt et al. ICIP 2018 (trained on LEVIR-CD train split)",
+      "parameters": 1944498,
+      "val_samples_evaluated": 128,
+      "threshold_calibrated": 0.40,
+      "metrics_val": {
+        "precision": 0.3763,
+        "recall": 0.5325,
+        "f1": 0.4216,
+        "iou": 0.3203
+      },
+      "status": "EVALUATED_VIABLE"
+    },
+    {
+      "model_name": "AttentionChangeNet (SACN - Winning Model)",
+      "architecture": "ResNet-18 Shared Backbone + Multi-Scale Spatial Difference Attention Decoder",
+      "provenance": "In-repo implementation with pretrained timm ResNet-18 backbone",
+      "parameters": 12562474,
+      "val_samples_evaluated": 128,
+      "threshold_calibrated": 0.50,
+      "metrics_val": {
+        "precision": 0.5862,
+        "recall": 0.5126,
+        "f1": 0.5345,
+        "iou": 0.4487
+      },
+      "held_out_test_metrics": {
+        "test_samples_evaluated": 256,
+        "calibrated_threshold": 0.50,
+        "precision": 0.3092,
+        "recall": 0.2528,
+        "f1": 0.2657,
+        "iou": 0.2297
+      },
+      "status": "SELECTED_WINNER",
+      "active_checkpoint": "models/satquery_change_v1/attention_best.safetensors"
+    }
+  ]
+}

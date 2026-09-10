@@ -1,0 +1,54 @@
+{
+  "model_architecture": "RS-CrossAttention-VQA",
+  "vision_backbone": "BlipVisionModel (ViT-B/16, 86M params)",
+  "text_backbone": "BlipTextModel (BERT, 110M params)",
+  "fusion": "Multi-Head Cross-Attention (dim=768, heads=8)",
+  "classifier": "Linear(768, 256) -> GELU -> Dropout -> Linear(256, 2)",
+  "train_samples": 7644,
+  "val_samples": 2396,
+  "steps": 450,
+  "batch_size": 16,
+  "pre_training_val": {
+    "samples_evaluated": 320,
+    "accuracy": 0.5,
+    "balanced_accuracy": 0.5,
+    "precision_yes": 0.5,
+    "recall_yes": 1.0,
+    "f1_yes": 0.6667,
+    "precision_no": 0.0,
+    "recall_no": 0.0,
+    "f1_no": 0.0,
+    "per_task_accuracy": {
+      "presence": 0.5,
+      "area": 0.5,
+      "count": 0.5,
+      "adjacency": 0.5
+    },
+    "prediction_distribution": {
+      "yes": 320,
+      "no": 0
+    }
+  },
+  "post_training_val": {
+    "samples_evaluated": 320,
+    "accuracy": 0.4344,
+    "balanced_accuracy": 0.4344,
+    "precision_yes": 0.3333,
+    "recall_yes": 0.1313,
+    "f1_yes": 0.1884,
+    "precision_no": 0.4591,
+    "recall_no": 0.7375,
+    "f1_no": 0.5659,
+    "per_task_accuracy": {
+      "presence": 0.3375,
+      "area": 0.45,
+      "count": 0.5375,
+      "adjacency": 0.4125
+    },
+    "prediction_distribution": {
+      "yes": 63,
+      "no": 257
+    }
+  },
+  "checkpoint_path": "models/satquery_rsvqa_v2/rs_cross_attention_vqa.pt"
+}

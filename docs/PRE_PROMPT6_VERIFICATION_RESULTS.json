@@ -1,0 +1,245 @@
+{
+  "model_provenance": {
+    "status": "PASS",
+    "details": {
+      "hub_model_id": "HZDR-FWGEL/UCD-LEVIRCD256-SiamUDiff",
+      "resolved_sha": "6340923b6ca2ec164b545f8b37e230b06c5a83c5",
+      "checkpoint_file": "model.safetensors",
+      "checkpoint_size_mb": 5.42,
+      "parameter_count": 1350146,
+      "strict_load": true,
+      "missing_keys": [],
+      "unexpected_keys": [],
+      "no_random_fallback": "load_siamunet_diff_model raises RuntimeError on any state_dict failure; no fallback initialisation"
+    }
+  },
+  "preprocessing_ablation": {
+    "status": "FAIL",
+    "variants": {
+      "raw_div255": {
+        "description": "Raw /255, no normalization",
+        "precision": 0.0853,
+        "recall": 0.0197,
+        "f1": 0.032,
+        "iou": 0.0163,
+        "tp": 723,
+        "fp": 7756,
+        "fn": 35951,
+        "tn": 1266290
+      },
+      "imagenet_norm": {
+        "description": "ImageNet mean/std normalization (pipeline setting)",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "iou": 0.0,
+        "tp": 0,
+        "fp": 1589,
+        "fn": 36674,
+        "tn": 1272457
+      }
+    },
+    "verdict": "Pipeline uses 'imagenet_norm' (F1=0.0000). Best variant on this subset: 'raw_div255' (F1=0.0320). "
+  },
+  "benchmark": {
+    "status": "PASS",
+    "benchmark_dataset": "ericyu/LEVIRCD_Cropped256",
+    "split": "validation",
+    "split_file": "data/val-00000-of-00001-d09d88a7419f2427.parquet",
+    "num_evaluated_pairs": 50,
+    "threshold": 0.5,
+    "threshold_source": "fixed_default_not_tuned_on_validation",
+    "preprocessing": "imagenet_mean_std_normalization",
+    "checkpoint": "HZDR-FWGEL/UCD-LEVIRCD256-SiamUDiff",
+    "device": "mps",
+    "seed": "sequential_rows_0_to_N-1_no_shuffle",
+    "true_positives": 99,
+    "false_positives": 4580,
+    "false_negatives": 124016,
+    "true_negatives": 3148105,
+    "precision": 0.0212,
+    "recall": 0.0008,
+    "f1_score": 0.0015,
+    "iou": 0.0008,
+    "mean_inference_latency_ms": 15.6
+  },
+  "registration": {
+    "tests": {
+      "A_identical": {
+        "quality_status": "HIGH",
+        "shift_magnitude_px": 0.0,
+        "zncc": 1.0,
+        "pass": true
+      },
+      "B_known_shift": {
+        "injected_shift_x": 5,
+        "injected_shift_y": -3,
+        "recovered_shift_x": -5.0,
+        "recovered_shift_y": 3.0,
+        "quality_status": "POOR",
+        "zncc": -0.0007,
+        "pass": true
+      },
+      "C_unrelated": {
+        "quality_status": "POOR",
+        "zncc": -0.0007,
+        "is_sufficient_for_localization": false,
+        "pass": true
+      }
+    },
+    "status": "PASS"
+  },
+  "area_calculation": {
+    "tests": {
+      "utm_10m_pixel": {
+        "pixel_area_m2": 100.0,
+        "expected_m2": 100.0,
+        "pass": true
+      },
+      "utm_affine_pixel": {
+        "pixel_area_m2": 100.0,
+        "pass": true
+      },
+      "geographic_4326_28N": {
+        "crs": "EPSG:4326",
+        "center_lat": 28.0,
+        "dx_deg": 0.0001,
+        "pixel_area_m2": 109.00459287542888,
+        "expected_range": [
+          90.0,
+          130.0
+        ],
+        "pass": true,
+        "units_check": "metric_m2_NOT_degrees_squared"
+      },
+      "changed_area_1000px_utm": {
+        "sq_meters": 100000.0,
+        "hectares": 10.0,
+        "sq_km": 0.1,
+        "pass": true
+      },
+      "real_geotiff_levir": {
+        "crs": "EPSG:32650",
+        "dx_m": 0.5,
+        "dy_m": 0.5,
+        "w": 256,
+        "h": 256,
+        "pixel_area_m2": 0.25
+      }
+    },
+    "status": "PASS"
+  },
+  "change_detection": {
+    "tests": {
+      "A_identical": {
+        "verdict": "NO_CHANGE_DETECTED",
+        "changed_pixels": 0,
+        "change_pct": 0.0,
+        "pass": true
+      },
+      "B_synthetic_rectangle": {
+        "verdict": "OBSERVED_CHANGE",
+        "changed_pixels": 435,
+        "clusters_found": 1,
+        "top_cluster_pixel_box": [
+          20,
+          20,
+          44,
+          44
+        ],
+        "mask_preview_url": "/api/uploads/previews/change_mask_verif_chg_b1_verif_chg_b2_e5328a.png",
+        "changed_area_m2": 43500.0,
+        "changed_area_ha": 4.35,
+        "pass": true
+      },
+      "C_real_levir": {
+        "verdict": "OBSERVED_CHANGE",
+        "changed_pixels": 3408,
+        "clusters": 20,
+        "change_pct": 5.2002,
+        "changed_ha": 0.0852,
+        "mask_url": "/api/uploads/previews/change_mask_verif_c1_verif_c2_e1e60e.png",
+        "registration": {
+          "method": "2D_phase_correlation_and_zncc",
+          "shift_x_pixels": 2.0,
+          "shift_y_pixels": 1.0,
+          "shift_magnitude_pixels": 2.24,
+          "correlation_coefficient": 0.5325,
+          "quality_status": "ACCEPTABLE",
+          "valid_overlap_pct": 100.0,
+          "is_sufficient_for_pixel_localization": true,
+          "warnings": [
+            "Minor co-registration residual detected: 2.24 px shift (ZNCC: 0.53)."
+          ]
+        },
+        "pass": true
+      }
+    },
+    "status": "PASS"
+  },
+  "semantic_safeguards": {
+    "tests": {
+      "what_changed": {
+        "question": "What changed between these two images?",
+        "answer_excerpt": "Between T1 and T2, surface change was detected across 4.35 hectares (10.62% of the scene). A total of 1 spatial change c...",
+        "confidence_is_null": true,
+        "pass": true
+      },
+      "where_changed": {
+        "question": "Where did the change occur?",
+        "answer_excerpt": "Significant surface changes between T1 and T2 are localized across 1 primary cluster(s) totaling 4.35 ha (10.62% of scen...",
+        "confidence_is_null": true,
+        "pass": true
+      },
+      "built_up_increase": {
+        "question": "Has built-up area increased?",
+        "answer_excerpt": "Surface alteration was detected across 4.35 hectares (10.62% of the scene) between T1 and T2. The largest contiguous cha...",
+        "has_semantic_safeguard": true,
+        "confidence_is_null": true,
+        "pass": true
+      },
+      "water_expand": {
+        "question": "Did water expand?",
+        "answer_excerpt": "Surface alteration was detected across 4.35 hectares (10.62% of the scene) between T1 and T2. The largest contiguous cha...",
+        "has_semantic_safeguard": true,
+        "confidence_is_null": true,
+        "pass": true
+      }
+    },
+    "status": "PASS"
+  },
+  "api_flow": {
+    "tests": {
+      "api_flow": {
+        "status": "COMPLETED",
+        "task": "TEMPORAL_CHANGE_VQA",
+        "confidence": null,
+        "execution_steps": 1,
+        "has_evidence": true,
+        "answer_excerpt": "Between T1 and T2, surface change was detected across 0.01 hectares (0.64% of the scene). A total of 5 spatial change cl...",
+        "pass": true
+      }
+    },
+    "status": "PASS"
+  },
+  "failure_modes": {
+    "tests": {
+      "F1_one_image": {
+        "status": "COMPLETED",
+        "task": "TaskFamily.SINGLE_VQA",
+        "pass": true
+      },
+      "F2_invalid_asset": {
+        "exception": "1 validation error for AnalysisResult\ntask\n  Input should be 'SINGLE_VQA', 'SINGLE_GROUNDING', 'SINGLE_CAPTION', 'TEMPORAL_CHANGE', 'TEMPORAL_CHANGE_VQA', 'OPTICAL_SAR_ANALYSIS' or 'UNKNOWN' [type=enum, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/enum",
+        "pass": true
+      },
+      "F3_no_overlap": {
+        "pass": true
+      },
+      "F4_sar_in_temporal": {
+        "pass": true
+      }
+    },
+    "status": "PASS"
+  }
+}

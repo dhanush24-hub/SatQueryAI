@@ -1,0 +1,14 @@
+{
+  "benchmark_dataset": "LEVIR-CD256 (Validation)",
+  "num_evaluated_pairs": 20,
+  "threshold": 0.3,
+  "device": "mps",
+  "true_positives": 1343,
+  "false_positives": 11289,
+  "false_negatives": 35331,
+  "true_negatives": 1262757,
+  "precision": 0.1063,
+  "recall": 0.0366,
+  "f1_score": 0.0545,
+  "iou": 0.028
+}

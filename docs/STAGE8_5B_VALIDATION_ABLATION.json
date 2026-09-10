@@ -1,0 +1,181 @@
+{
+  "timestamp": "2026-09-10 08:24:43",
+  "validation_manifest": "data/manifests/bigearthnet_txt_stage8_5b_val.json",
+  "train_manifest": "data/manifests/bigearthnet_txt_stage8_5b_train.json",
+  "experiments": [
+    {
+      "experiment": "Experiment_A_Standard_LR1e-4",
+      "hyperparameters": {
+        "lr": 0.0001,
+        "balanced_sampler": false,
+        "lora_r": 8,
+        "lora_alpha": 16,
+        "steps": 450,
+        "batch_size": 16
+      },
+      "pre_training_val": {
+        "samples_evaluated": 240,
+        "val_loss": 0.6187,
+        "accuracy": 0.5375,
+        "balanced_accuracy": 0.5388,
+        "precision_yes": 0.527,
+        "recall_yes": 0.975,
+        "f1_yes": 0.6842,
+        "precision_no": 0.8,
+        "recall_no": 0.1026,
+        "f1_no": 0.1819,
+        "per_task_accuracy": {
+          "presence": 0.6167,
+          "area": 0.5167,
+          "count": 0.4833,
+          "adjacency": 0.5333
+        },
+        "prediction_distribution": {
+          "yes": 222,
+          "no": 15,
+          "other": 3
+        }
+      },
+      "post_training_val": {
+        "samples_evaluated": 240,
+        "val_loss": 0.4579,
+        "accuracy": 0.5208,
+        "balanced_accuracy": 0.5209,
+        "precision_yes": 0.5385,
+        "recall_yes": 0.2917,
+        "f1_yes": 0.3784,
+        "precision_no": 0.5143,
+        "recall_no": 0.75,
+        "f1_no": 0.6102,
+        "per_task_accuracy": {
+          "presence": 0.5667,
+          "area": 0.5667,
+          "count": 0.5833,
+          "adjacency": 0.3667
+        },
+        "prediction_distribution": {
+          "yes": 65,
+          "no": 175,
+          "other": 0
+        }
+      },
+      "checkpoint_dir": "models/stage8_5b_recovery/experiment_a_standard_lr1e-4"
+    },
+    {
+      "experiment": "Experiment_B_Low_LR3e-5",
+      "hyperparameters": {
+        "lr": 3e-05,
+        "balanced_sampler": false,
+        "lora_r": 8,
+        "lora_alpha": 16,
+        "steps": 450,
+        "batch_size": 16
+      },
+      "pre_training_val": {
+        "samples_evaluated": 240,
+        "val_loss": 0.6187,
+        "accuracy": 0.5375,
+        "balanced_accuracy": 0.5388,
+        "precision_yes": 0.527,
+        "recall_yes": 0.975,
+        "f1_yes": 0.6842,
+        "precision_no": 0.8,
+        "recall_no": 0.1026,
+        "f1_no": 0.1819,
+        "per_task_accuracy": {
+          "presence": 0.6167,
+          "area": 0.5167,
+          "count": 0.4833,
+          "adjacency": 0.5333
+        },
+        "prediction_distribution": {
+          "yes": 222,
+          "no": 15,
+          "other": 3
+        }
+      },
+      "post_training_val": {
+        "samples_evaluated": 240,
+        "val_loss": 0.4193,
+        "accuracy": 0.5542,
+        "balanced_accuracy": 0.5542,
+        "precision_yes": 0.5556,
+        "recall_yes": 0.5417,
+        "f1_yes": 0.5486,
+        "precision_no": 0.5528,
+        "recall_no": 0.5667,
+        "f1_no": 0.5597,
+        "per_task_accuracy": {
+          "presence": 0.6167,
+          "area": 0.6,
+          "count": 0.5167,
+          "adjacency": 0.4833
+        },
+        "prediction_distribution": {
+          "yes": 117,
+          "no": 123,
+          "other": 0
+        }
+      },
+      "checkpoint_dir": "models/stage8_5b_recovery/experiment_b_low_lr3e-5"
+    },
+    {
+      "experiment": "Experiment_C_Balanced_Sampler_LR3e-5",
+      "hyperparameters": {
+        "lr": 3e-05,
+        "balanced_sampler": true,
+        "lora_r": 8,
+        "lora_alpha": 16,
+        "steps": 450,
+        "batch_size": 16
+      },
+      "pre_training_val": {
+        "samples_evaluated": 240,
+        "val_loss": 0.6187,
+        "accuracy": 0.5375,
+        "balanced_accuracy": 0.5388,
+        "precision_yes": 0.527,
+        "recall_yes": 0.975,
+        "f1_yes": 0.6842,
+        "precision_no": 0.8,
+        "recall_no": 0.1026,
+        "f1_no": 0.1819,
+        "per_task_accuracy": {
+          "presence": 0.6167,
+          "area": 0.5167,
+          "count": 0.4833,
+          "adjacency": 0.5333
+        },
+        "prediction_distribution": {
+          "yes": 222,
+          "no": 15,
+          "other": 3
+        }
+      },
+      "post_training_val": {
+        "samples_evaluated": 240,
+        "val_loss": 0.4168,
+        "accuracy": 0.5708,
+        "balanced_accuracy": 0.5708,
+        "precision_yes": 0.557,
+        "recall_yes": 0.6917,
+        "f1_yes": 0.6171,
+        "precision_no": 0.5934,
+        "recall_no": 0.45,
+        "f1_no": 0.5118,
+        "per_task_accuracy": {
+          "presence": 0.6333,
+          "area": 0.5833,
+          "count": 0.5833,
+          "adjacency": 0.4833
+        },
+        "prediction_distribution": {
+          "yes": 149,
+          "no": 91,
+          "other": 0
+        }
+      },
+      "checkpoint_dir": "models/stage8_5b_recovery/experiment_c_balanced_sampler_lr3e-5"
+    }
+  ]
+}

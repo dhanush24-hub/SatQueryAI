@@ -1,0 +1,210 @@
+{
+  "storage_mb": 31.16,
+  "train": {
+    "split_name": "train",
+    "manifest_path": "data/manifests/bigearthnet_txt_stage8_5b_train.json",
+    "unique_patches": 1000,
+    "total_questions": 7644,
+    "questions_per_patch_mean": 7.64,
+    "questions_per_patch_min": 7,
+    "questions_per_patch_max": 8,
+    "answer_distribution": {
+      "no": 4000,
+      "yes": 3644
+    },
+    "answer_percentages": {
+      "no": 0.5233,
+      "yes": 0.4767
+    },
+    "task_distribution": {
+      "area": 2000,
+      "count": 2000,
+      "presence": 2000,
+      "adjacency": 1644
+    },
+    "task_percentages": {
+      "area": 0.2616,
+      "count": 0.2616,
+      "presence": 0.2616,
+      "adjacency": 0.2151
+    },
+    "per_task_balance": {
+      "adjacency": {
+        "total": 1644,
+        "yes": 644,
+        "no": 1000,
+        "yes_ratio": 0.3917
+      },
+      "area": {
+        "total": 2000,
+        "yes": 1000,
+        "no": 1000,
+        "yes_ratio": 0.5
+      },
+      "count": {
+        "total": 2000,
+        "yes": 1000,
+        "no": 1000,
+        "yes_ratio": 0.5
+      },
+      "presence": {
+        "total": 2000,
+        "yes": 1000,
+        "no": 1000,
+        "yes_ratio": 0.5
+      }
+    },
+    "top_lulc_classes": {
+      "Mixed forest": 483,
+      "Coniferous forest": 454,
+      "Marine waters": 373,
+      "Transitional woodland, shrub": 330,
+      "Inland waters": 250,
+      "Arable land": 129,
+      "Complex cultivation patterns": 119,
+      "Land principally occupied by agriculture, with significant areas of natural vegetation": 108,
+      "Urban fabric": 104,
+      "Broad-leaved forest": 75
+    }
+  },
+  "validation": {
+    "split_name": "validation",
+    "manifest_path": "data/manifests/bigearthnet_txt_stage8_5b_val.json",
+    "unique_patches": 300,
+    "total_questions": 2396,
+    "questions_per_patch_mean": 7.99,
+    "questions_per_patch_min": 7,
+    "questions_per_patch_max": 8,
+    "answer_distribution": {
+      "no": 1200,
+      "yes": 1196
+    },
+    "answer_percentages": {
+      "no": 0.5008,
+      "yes": 0.4992
+    },
+    "task_distribution": {
+      "area": 600,
+      "count": 600,
+      "presence": 600,
+      "adjacency": 596
+    },
+    "task_percentages": {
+      "area": 0.2504,
+      "count": 0.2504,
+      "presence": 0.2504,
+      "adjacency": 0.2487
+    },
+    "per_task_balance": {
+      "adjacency": {
+        "total": 596,
+        "yes": 296,
+        "no": 300,
+        "yes_ratio": 0.4966
+      },
+      "area": {
+        "total": 600,
+        "yes": 300,
+        "no": 300,
+        "yes_ratio": 0.5
+      },
+      "count": {
+        "total": 600,
+        "yes": 300,
+        "no": 300,
+        "yes_ratio": 0.5
+      },
+      "presence": {
+        "total": 600,
+        "yes": 300,
+        "no": 300,
+        "yes_ratio": 0.5
+      }
+    },
+    "top_lulc_classes": {
+      "Land principally occupied by agriculture, with significant areas of natural vegetation": 195,
+      "Mixed forest": 141,
+      "Broad-leaved forest": 131,
+      "Arable land": 127,
+      "Complex cultivation patterns": 112,
+      "Transitional woodland, shrub": 94,
+      "Coniferous forest": 84,
+      "Inland waters": 80,
+      "Urban fabric": 39,
+      "Inland wetlands": 15
+    }
+  },
+  "bench_locked": {
+    "split_name": "bench (LOCKED)",
+    "manifest_path": "data/manifests/bigearthnet_txt_stage8_5b_bench.json",
+    "unique_patches": 32,
+    "total_questions": 356,
+    "questions_per_patch_mean": 11.12,
+    "questions_per_patch_min": 6,
+    "questions_per_patch_max": 25,
+    "answer_distribution": {
+      "yes": 202,
+      "no": 154
+    },
+    "answer_percentages": {
+      "yes": 0.5674,
+      "no": 0.4326
+    },
+    "task_distribution": {
+      "adjacency": 177,
+      "area": 69,
+      "count": 59,
+      "presence": 51
+    },
+    "task_percentages": {
+      "adjacency": 0.4972,
+      "area": 0.1938,
+      "count": 0.1657,
+      "presence": 0.1433
+    },
+    "per_task_balance": {
+      "adjacency": {
+        "total": 177,
+        "yes": 96,
+        "no": 81,
+        "yes_ratio": 0.5424
+      },
+      "area": {
+        "total": 69,
+        "yes": 35,
+        "no": 34,
+        "yes_ratio": 0.5072
+      },
+      "count": {
+        "total": 59,
+        "yes": 33,
+        "no": 26,
+        "yes_ratio": 0.5593
+      },
+      "presence": {
+        "total": 51,
+        "yes": 38,
+        "no": 13,
+        "yes_ratio": 0.7451
+      }
+    },
+    "top_lulc_classes": {
+      "Broad-leaved forest": 16,
+      "Transitional woodland, shrub": 15,
+      "Arable land": 13,
+      "Agro-forestry areas": 12,
+      "Permanent crops": 11,
+      "Complex cultivation patterns": 9,
+      "Mixed forest": 8,
+      "Inland waters": 7,
+      "Land principally occupied by agriculture, with significant areas of natural vegetation": 7,
+      "Natural grassland and sparsely vegetated areas": 5
+    }
+  },
+  "stage_a_bias_root_cause": {
+    "issue_1_coordinate_transposition": "H-Order (column) and V-Order (row) were inverted in Stage A window extraction, displacing imagery 10 km to 147 km away from annotation coordinates across the tile diagonal. This caused the model to see land cover completely different from ground truth.",
+    "issue_2_negative_gradient_cascade": "Because the wrong patch rarely contained the queried land cover class, the model received overwhelming negative reinforcement whenever it attempted to predict positive classes, inducing severe negative bias (67 Yes / 289 No).",
+    "issue_3_supervision_padding": "Padding tokens were passed with value 0 instead of -100 into cross-entropy loss, penalizing the decoder on all non-answer positions.",
+    "recovery_verification": "The 16-sample tiny overfit test proved that with corrected coordinates and ignore_index=-100 masking, the model reaches 93.8% accuracy (loss: 0.4944 -> 0.0201) with balanced yes/no output."
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "benchmark_file": "data/manifests/bigearthnet_txt_stage8_5b_bench.json",
+  "total_samples": 356,
+  "adapter_dir": "models/satquery_rs_vlm_v1/final_checkpoint",
+  "adapter_sha256": "96c796394630775f7cd5eae3941b2e0b5a6f7c0402b83a57d5ea47aacee1abaa",
+  "overall_accuracy": 0.5028,
+  "balanced_accuracy": 0.5032,
+  "format_compliance_rate": 1.0,
+  "mean_latency_ms": 270.56,
+  "median_latency_ms": 261.27,
+  "p95_latency_ms": 366.12,
+  "total_evaluation_time_sec": 100.39,
+  "metrics_yes": {
+    "precision": 0.5706,
+    "recall": 0.5,
+    "f1": 0.533
+  },
+  "metrics_no": {
+    "precision": 0.4358,
+    "recall": 0.5065,
+    "f1": 0.4685
+  },
+  "per_task_accuracy": {
+    "presence": 0.3137,
+    "area": 0.6522,
+    "count": 0.4746,
+    "adjacency": 0.5085
+  },
+  "prediction_distribution": {
+    "yes": 177,
+    "no": 179,
+    "other": 0
+  },
+  "comparison": {
+    "generic_blip_baseline": 0.5253,
+    "stage_a_adapted": 0.4972,
+    "stage_8_5b_adapted": 0.5028,
+    "delta_over_generic": -0.0225,
+    "delta_over_stage_a": 0.0056
+  }
+}

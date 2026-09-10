@@ -1,0 +1,33 @@
+{
+  "dataset": "BigEarthNet.txt Validation",
+  "samples": 100,
+  "strategies": [
+    {
+      "strategy": "A (Standard Reflectance 0-3000)",
+      "total_evaluated": 100,
+      "correct": 54,
+      "accuracy": 0.54,
+      "yes_count": 92,
+      "no_count": 6,
+      "yes_ratio": 0.92
+    },
+    {
+      "strategy": "B (2-98% Percentile Stretch)",
+      "total_evaluated": 100,
+      "correct": 54,
+      "accuracy": 0.54,
+      "yes_count": 92,
+      "no_count": 6,
+      "yes_ratio": 0.92
+    },
+    {
+      "strategy": "C (Gamma 1.1 Shadow Stretch)",
+      "total_evaluated": 100,
+      "correct": 52,
+      "accuracy": 0.52,
+      "yes_count": 94,
+      "no_count": 4,
+      "yes_ratio": 0.94
+    }
+  ]
+}

@@ -1,0 +1,682 @@
+[
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_01_76",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 1,
+    "v_order": 76,
+    "correct_bounds_utm": [
+      501180.0,
+      6908820.0,
+      502380.0,
+      6907620.0
+    ],
+    "stageA_bounds_utm": [
+      591180.0,
+      6998820.0,
+      592380.0,
+      6997620.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 127.28,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_28",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 28,
+    "correct_bounds_utm": [
+      499980.0,
+      6966420.0,
+      501180.0,
+      6965220.0
+    ],
+    "stageA_bounds_utm": [
+      533580.0,
+      7000020.0,
+      534780.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 47.52,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_06",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 6,
+    "correct_bounds_utm": [
+      499980.0,
+      6992820.0,
+      501180.0,
+      6991620.0
+    ],
+    "stageA_bounds_utm": [
+      507180.0,
+      7000020.0,
+      508380.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 10.18,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_02_13",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 2,
+    "v_order": 13,
+    "correct_bounds_utm": [
+      502380.0,
+      6984420.0,
+      503580.0,
+      6983220.0
+    ],
+    "stageA_bounds_utm": [
+      515580.0,
+      6997620.0,
+      516780.0,
+      6996420.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 18.67,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_70",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 70,
+    "correct_bounds_utm": [
+      499980.0,
+      6916020.0,
+      501180.0,
+      6914820.0
+    ],
+    "stageA_bounds_utm": [
+      583980.0,
+      7000020.0,
+      585180.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 118.79,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_62",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 62,
+    "correct_bounds_utm": [
+      499980.0,
+      6925620.0,
+      501180.0,
+      6924420.0
+    ],
+    "stageA_bounds_utm": [
+      574380.0,
+      7000020.0,
+      575580.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 105.22,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_57",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 57,
+    "correct_bounds_utm": [
+      499980.0,
+      6931620.0,
+      501180.0,
+      6930420.0
+    ],
+    "stageA_bounds_utm": [
+      568380.0,
+      7000020.0,
+      569580.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 96.73,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_35",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 35,
+    "correct_bounds_utm": [
+      499980.0,
+      6958020.0,
+      501180.0,
+      6956820.0
+    ],
+    "stageA_bounds_utm": [
+      541980.0,
+      7000020.0,
+      543180.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 59.4,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_02_12",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 2,
+    "v_order": 12,
+    "correct_bounds_utm": [
+      502380.0,
+      6985620.0,
+      503580.0,
+      6984420.0
+    ],
+    "stageA_bounds_utm": [
+      514380.0,
+      6997620.0,
+      515580.0,
+      6996420.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 16.97,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_26",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 26,
+    "correct_bounds_utm": [
+      499980.0,
+      6968820.0,
+      501180.0,
+      6967620.0
+    ],
+    "stageA_bounds_utm": [
+      531180.0,
+      7000020.0,
+      532380.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 44.12,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_01_88",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 1,
+    "v_order": 88,
+    "correct_bounds_utm": [
+      501180.0,
+      6894420.0,
+      502380.0,
+      6893220.0
+    ],
+    "stageA_bounds_utm": [
+      605580.0,
+      6998820.0,
+      606780.0,
+      6997620.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 147.64,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNL_13_41",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNL_20201012T141409",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNL",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 13,
+    "v_order": 41,
+    "correct_bounds_utm": [
+      515580.0,
+      7050840.0,
+      516780.0,
+      7049640.0
+    ],
+    "stageA_bounds_utm": [
+      549180.0,
+      7084440.0,
+      550380.0,
+      7083240.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 47.52,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_01_52",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 1,
+    "v_order": 52,
+    "correct_bounds_utm": [
+      501180.0,
+      6937620.0,
+      502380.0,
+      6936420.0
+    ],
+    "stageA_bounds_utm": [
+      562380.0,
+      6998820.0,
+      563580.0,
+      6997620.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 86.55,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_22",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 22,
+    "correct_bounds_utm": [
+      499980.0,
+      6973620.0,
+      501180.0,
+      6972420.0
+    ],
+    "stageA_bounds_utm": [
+      526380.0,
+      7000020.0,
+      527580.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 37.34,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_01_64",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 1,
+    "v_order": 64,
+    "correct_bounds_utm": [
+      501180.0,
+      6923220.0,
+      502380.0,
+      6922020.0
+    ],
+    "stageA_bounds_utm": [
+      576780.0,
+      6998820.0,
+      577980.0,
+      6997620.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 106.91,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_01_21",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 1,
+    "v_order": 21,
+    "correct_bounds_utm": [
+      501180.0,
+      6974820.0,
+      502380.0,
+      6973620.0
+    ],
+    "stageA_bounds_utm": [
+      525180.0,
+      6998820.0,
+      526380.0,
+      6997620.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 33.94,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_08",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 8,
+    "correct_bounds_utm": [
+      499980.0,
+      6990420.0,
+      501180.0,
+      6989220.0
+    ],
+    "stageA_bounds_utm": [
+      509580.0,
+      7000020.0,
+      510780.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 13.58,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_07",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 7,
+    "correct_bounds_utm": [
+      499980.0,
+      6991620.0,
+      501180.0,
+      6990420.0
+    ],
+    "stageA_bounds_utm": [
+      508380.0,
+      7000020.0,
+      509580.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 11.88,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_23",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 23,
+    "correct_bounds_utm": [
+      499980.0,
+      6972420.0,
+      501180.0,
+      6971220.0
+    ],
+    "stageA_bounds_utm": [
+      527580.0,
+      7000020.0,
+      528780.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 39.03,
+    "stageA_correct": false
+  },
+  {
+    "patch_id": "S2B_MSIL2A_20180525T094029_N9999_R036_T35VNK_00_55",
+    "product_id": "S2B_MSIL2A_20180525T094029_R036_T35VNK_20201012T141402",
+    "timestamp": "2018-05-25T09:40:29.025000Z",
+    "tile_id": "35VNK",
+    "crs": "EPSG:32635",
+    "pixel_resolution": "10.0m",
+    "tile_shape": [
+      10980,
+      10980
+    ],
+    "h_order": 0,
+    "v_order": 55,
+    "correct_bounds_utm": [
+      499980.0,
+      6934020.0,
+      501180.0,
+      6932820.0
+    ],
+    "stageA_bounds_utm": [
+      565980.0,
+      7000020.0,
+      567180.0,
+      6998820.0
+    ],
+    "bands_used": [
+      "B04",
+      "B03",
+      "B02"
+    ],
+    "patch_dimensions": "120x120",
+    "spatial_displacement_km": 93.34,
+    "stageA_correct": false
+  }
+]

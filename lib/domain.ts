@@ -11,5 +11,10 @@ export type EvidenceValidation={findingId:string;verdict:'supported'|'partially_
 export type CrossSensorAssessment={finding:string;relationship:'agreement'|'complementary'|'disagreement'|'inconclusive';explanation:string;evidenceIds:string[]};
 export type CandidateBundle={findings:Finding[];evidenceItems:EvidenceItem[];crossSensorAssessment:CrossSensorAssessment[]};
 export type ExecutionTrace={timestamp:string;stepId:string;step:string;purpose:string;inputs:string[];provider:string;status:'running'|'completed'|'blocked'|'skipped'|'failed';summary:string};
-export type MissionResult=CandidateBundle&{validations:EvidenceValidation[];directAnswer:string;uncertainties:string[];nextQuestion:string;trace:ExecutionTrace[];source:string;workflow:WorkflowStep[]};
+export type TelemetryMetadata={platform:string;sensor:string;resolutionGsd:string;orbitPass:string;incidenceAngle?:string;solarElevation?:string;solarAzimuth?:string;crs:string;coregistrationRms?:string};
+export type LulcMetric={category:string;color:string;t1Percent:number;t2Percent:number;deltaPercent:number;areaHectares:number;trend:'increase'|'decrease'|'stable'};
+export type SpectralAnalysis={indexName:string;description:string;valueT1:string;valueT2:string;deltaInterpretation:string};
+export type IsroAnalysisData={telemetry?:TelemetryMetadata[];lulc?:LulcMetric[];spectral?:SpectralAnalysis[];confidenceScore?:number;changeDetectionMask?:{x:number;y:number;width:number;height:number;intensity:number;category:string}[]};
+export type MissionResult=CandidateBundle&{validations:EvidenceValidation[];directAnswer:string;uncertainties:string[];nextQuestion:string;trace:ExecutionTrace[];source:string;workflow:WorkflowStep[];isroData?:IsroAnalysisData};
 export type MissionContext={question:string;history:{role:string;text:string}[];previousResult?:MissionResult;previousPlan?:unknown};
+
