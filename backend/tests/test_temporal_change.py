@@ -306,7 +306,8 @@ def test_temporal_vqa_semantic_boundary_safeguard():
     )
     res = vqa_adapter.predict(req)
 
-    # SIH non-negotiable requirement: Must NOT claim 'built-up increased' without a semantic segmenter
+    # Non-negotiable requirement: Must NOT claim 'built-up increased' without a semantic segmenter
+
     assert "semantic" in res.answer.lower()
     assert "cannot be conclusively confirmed" in res.answer.lower()
     assert any("Semantic boundary limitation" in w for w in res.warnings)

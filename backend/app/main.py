@@ -25,7 +25,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="SatQuery AI Backend",
-    description="Agentic Vision-Language Assistant for Remote Sensing Imagery (SIH 2026 / PS 26167)",
+    description="Agentic Vision-Language Assistant for Remote Sensing Imagery",
+
     version=settings.VERSION,
     lifespan=lifespan
 )

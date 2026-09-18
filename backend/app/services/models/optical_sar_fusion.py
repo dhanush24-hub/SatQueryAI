@@ -43,7 +43,7 @@ class OpticalSarFusionResponse(BaseModel):
     task_family: TaskFamily = TaskFamily.OPTICAL_SAR_ANALYSIS
     direct_answer: str
     uncertainty_state: str  # SUPPORTED, SUPPORTED_WITH_WARNINGS, WEAK, CONFLICTING, INSUFFICIENT_EVIDENCE, OUT_OF_DOMAIN, UNAVAILABLE
-    confidence: Optional[float] = None  # None per SIH PS 26167
+    confidence: Optional[float] = None  # None per zero-fabrication calibration rules
     optical_evidence: List[OpticalSarEvidenceCluster] = Field(default_factory=list)
     sar_evidence: List[OpticalSarEvidenceCluster] = Field(default_factory=list)
     agreement_regions: List[OpticalSarEvidenceCluster] = Field(default_factory=list)
@@ -189,7 +189,7 @@ class OpticalSarFusionAdapter:
             answer = (
                 f"Cross-modal analysis completed with unverified registration ({reg_assessment.quality_status}). "
                 f"Optical scene exhibits {opt_water_ratio}% candidate water features; SAR indicates {sar_water_ratio}% "
-                f"specular low-backscatter surfaces. Direct spatial overlay was suppressed per SIH PS 26167 safeguards."
+                f"specular low-backscatter surfaces. Direct spatial overlay was suppressed per cross-modal safeguards."
             )
 
         else:
@@ -266,7 +266,7 @@ class OpticalSarFusionAdapter:
                 f"Sensor divergence noted across {disagreement_ratio}% of the scene (Uncertainty: {uncertainty_state})."
             )
 
-        # Strict SIH rule: No synthetic confidence
+        # Strict rule: No synthetic confidence
         confidence = None
 
         duration_ms = round((time.time() - t0) * 1000, 2)

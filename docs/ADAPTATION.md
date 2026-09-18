@@ -75,7 +75,7 @@ PYTHONPATH=backend .venv/bin/python backend/app/services/models/adaptation/evalu
 
 ## 5. Compliance & Integrity Statement
 
-In strict compliance with SIH 2026 rules:
+In strict compliance with SatQuery AI rules:
 1. Benchmark test splits are **never** used during training.
 2. Loading an off-the-shelf pretrained foundation model is **not** claimed as fine-tuning.
 3. The training pipeline is fully reproducible and delivered in the repository. Its execution status is truthfully reported as **NOT YET COMPLETED** on the current 8 GB development machine until connected to adequate GPU compute.

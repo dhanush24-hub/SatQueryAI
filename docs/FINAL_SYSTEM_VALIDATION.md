@@ -1,6 +1,6 @@
 # SatQuery AI: Final System Validation Report
 
-This report documents the end-to-end empirical verification of SatQuery AI for the Smart India Hackathon (SIH PS 26167).
+This report documents the end-to-end empirical verification of SatQuery AI for the SatQuery AI (SatQuery AI System Specification).
 
 ---
 

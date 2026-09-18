@@ -4,7 +4,8 @@ Multi-Sensor Optical + SAR Benchmark Evaluation Script.
 Evaluates Optical-only, SAR-only, and Fused pipelines on the SAME held-out paired samples.
 Measures performance under both clear-sky and cloud-degraded atmospheric conditions.
 
-Strictly follows SIH PS 26167 guidelines:
+Strictly follows geospatial validation guidelines:
+
 - No fabricated improvements or metrics.
 - Same held-out evaluation samples across all compared modalities.
 - Clear documentation of sensor complementarity and atmospheric robustness.
@@ -153,7 +154,8 @@ def compute_metrics(y_true_all: List[np.ndarray], y_pred_all: List[np.ndarray]) 
 def main():
     print("=" * 70)
     print("SatQuery AI — Multi-Sensor Optical + SAR Benchmark Evaluation")
-    print("SIH 2026 / PS 26167 Scientific Validation")
+    print("SatQuery AI Cross-Modal Scientific Validation")
+
     print("=" * 70)
 
     tiles = generate_benchmark_evaluation_tiles(num_tiles=40, size=128)

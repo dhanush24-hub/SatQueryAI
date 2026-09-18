@@ -198,7 +198,7 @@ export function mapBackendAnalysisToMissionResult(
       evidenceIds: [ev.id],
       confidence: {
         level: (ev.reliability === 'high' ? 'high' : 'medium') as Strength,
-        meaning: 'Bi-temporal difference inference (uncalibrated probability per SIH PS 26167)',
+        meaning: 'Bi-temporal difference inference (uncalibrated probability)',
       },
       alternativeExplanations: [],
       limitations: ev.limitations,
@@ -232,7 +232,7 @@ export function mapBackendAnalysisToMissionResult(
       evidenceIds: [ev.id],
       confidence: {
         level: (ev.reliability === 'high' ? 'high' : 'medium') as Strength,
-        meaning: 'Raw detector logit above threshold (uncalibrated probability per SIH PS 26167)',
+        meaning: 'Raw detector logit above threshold (uncalibrated probability)',
       },
       alternativeExplanations: [],
       limitations: ev.limitations,

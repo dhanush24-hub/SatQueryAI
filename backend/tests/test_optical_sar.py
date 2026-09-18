@@ -254,7 +254,8 @@ def test_optical_sar_fusion_agreement_and_null_confidence():
     )
     res = optical_sar_fusion_adapter.predict(req)
 
-    assert res.confidence is None  # Strict SIH rule
+    assert res.confidence is None  # Strict zero-fabrication rule
+
     assert res.uncertainty_state in ["SUPPORTED", "SUPPORTED_WITH_WARNINGS"]
     assert len(res.agreement_regions) > 0
     assert res.agreement_ratio_pct > 10.0

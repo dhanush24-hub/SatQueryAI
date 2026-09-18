@@ -1,6 +1,7 @@
-# SatQuery AI: SIH Jury Demonstration Script & Scenarios
+# SatQuery AI: Demonstration Walkthrough & Scenarios
 
-This document provides a guided walkthrough for demonstrating SatQuery AI to the Smart India Hackathon evaluation panel.
+This document provides a guided walkthrough for demonstrating SatQuery AI's geospatial workflows.
+
 
 ---
 

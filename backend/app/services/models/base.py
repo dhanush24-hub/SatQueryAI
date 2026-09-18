@@ -19,7 +19,8 @@ class ModelAdapter(ABC):
     @property
     @abstractmethod
     def task_family(self) -> TaskFamily:
-        """Primary SIH task family handled by this adapter."""
+        """Primary task family handled by this adapter."""
+
         pass
 
     @property

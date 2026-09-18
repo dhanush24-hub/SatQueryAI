@@ -1,6 +1,7 @@
-# SatQuery AI — Target Production Architecture
-**SIH 2026 / Problem Statement 26167**  
-**Team Alpha Logic**
+# SatQuery AI — System Architecture
+**AI-Powered Satellite Image Analysis System**
+
+
 
 ---
 

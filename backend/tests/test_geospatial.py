@@ -109,7 +109,8 @@ def test_png_benchmark_mode_gating():
     Image.new("RGB", (32, 32), color=(200, 100, 50)).save(buf, format="PNG")
     png_bytes = buf.getvalue()
     
-    # Attempt 1: Upload PNG without benchmark_mode -> Must be rejected per SIH GeoTIFF-first rule
+    # Attempt 1: Upload PNG without benchmark_mode -> Must be rejected per GeoTIFF-first rule
+
     files = [("files", ("benchmark_sample.png", io.BytesIO(png_bytes), "image/png"))]
     response = client.post("/api/uploads", files=files)
     assert response.status_code == 400

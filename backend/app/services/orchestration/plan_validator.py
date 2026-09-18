@@ -73,7 +73,8 @@ class PlanValidator:
                         return (
                             False,
                             f"SAR imagery is not supported by optical specialist model '{tool.name}'. "
-                            "Dedicated SAR specialist model is required per SIH PS 26167 guidelines.",
+                            "Dedicated SAR specialist model is required for SAR modality analysis.",
+
                             AnalysisStatus.MODEL_UNAVAILABLE
                         )
                     return (

@@ -3,7 +3,7 @@
 **Experiment Title:** BigEarthNet.txt S2-RGB adaptation  
 **Date:** 2026-09-10  
 **Evaluator:** SatQuery AI Engineering Audit  
-**Compliance Standard:** Smart India Hackathon PS 26167 / Prompt 8.5  
+**Compliance Standard:** SatQuery AI SatQuery AI Specification / Prompt 8.5  
 
 ---
 
@@ -159,7 +159,7 @@
 
 ## 16. Stage A: PASS / PARTIAL / FAIL
 - **Verdict: PARTIAL**
-- **Rationale:** Authentic data acquisition, zero-leakage benchmark isolation, PEFT training, real weights generation, and 100% format compliance were achieved without fabrication. However, because overall benchmark accuracy did not decisively beat generic BLIP (49.72% vs 52.53%), domain adaptation cannot be certified as a complete PASS under strict PS 26167 criteria.
+- **Rationale:** Authentic data acquisition, zero-leakage benchmark isolation, PEFT training, real weights generation, and 100% format compliance were achieved without fabrication. However, because overall benchmark accuracy did not decisively beat generic BLIP (49.72% vs 52.53%), domain adaptation cannot be certified as a complete PASS under strict SatQuery AI Specification criteria.
 
 ---
 

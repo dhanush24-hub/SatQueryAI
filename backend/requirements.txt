@@ -15,3 +15,5 @@ safetensors>=0.4.3
 scipy>=1.13.0
 reportlab>=4.2.0
 transformers>=4.40.0
+timm>=1.0.0
+

@@ -1,6 +1,6 @@
 # Final Model Provenance and Architecture Specification
 
-**SatQuery AI — Problem Statement 26167**
+**SatQuery AI — System Specification**
 
 ## Production Change Detection Model
 

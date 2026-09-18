@@ -125,7 +125,9 @@ storage/accuracy_validation/
 storage/real_satellite_verification/
 # Generated diagnostic cases
 storage/diagnostic_cases/
+storage/ctrl_*.tif
 # KEEP: storage/fixtures/ (demo fixtures)
+
 # KEEP: storage/scenario_*.* (test fixtures)
 # KEEP: storage/test_*.* (test fixtures)
 # KEEP: storage/verif_*.* (verification fixtures)
@@ -140,8 +142,10 @@ storage/diagnostic_cases/
 logs/
 tmp/
 temp/
+lint-report/
 .cache/
 .tmp/
+
 
 # ---------------------------
 # Deployment / CI

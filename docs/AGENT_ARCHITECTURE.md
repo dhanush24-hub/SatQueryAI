@@ -1,6 +1,6 @@
 # SatQuery AI - Agent Architecture Specification
 
-**Problem Statement:** ISRO / SIH 2026 - PS 26167  
+**Problem Statement:** ISRO / SatQuery AI - SatQuery AI Specification  
 **System:** SatQuery AI Bounded Agentic Workflow Controller  
 **Document Version:** 1.0 (Prompt 4 of 8)
 

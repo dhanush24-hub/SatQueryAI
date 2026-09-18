@@ -100,7 +100,8 @@ def run_smoke_tests():
     print(f"VQA Question: '{question}'")
     print(f"VQA Answer: '{vqa_res.answer}'")
     print(f"VQA Device: {vqa_res.device} | Latency: {vqa_res.inference_latency_ms:.1f}ms (Wall: {dur_vqa*1000:.1f}ms)")
-    print(f"Confidence: {vqa_res.confidence} (Uncalibrated per SIH requirements)")
+    print(f"Confidence: {vqa_res.confidence} (Uncalibrated per zero-fabrication rules)")
+
     assert vqa_res.answer and len(vqa_res.answer.strip()) > 0, "VQA returned empty answer!"
 
     # 2. Text-Guided Grounding Smoke Test

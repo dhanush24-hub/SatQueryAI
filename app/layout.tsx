@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'SatQuery AI — Earth observation, in conversation',
-  description: 'Ask questions of satellite imagery and inspect the evidence. An Alpha Logic SIH prototype.',
+  description: 'AI-powered satellite image analysis system. Ask natural language questions, detect temporal change, and inspect evidence-gated geospatial intelligence.',
 };
+
 
 export default function RootLayout({
   children,

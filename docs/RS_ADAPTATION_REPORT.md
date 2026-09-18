@@ -2,7 +2,7 @@
 
 ## 1. Executive Audit: What Is Genuinely RS-Adapted?
 
-In compliance with the SIH PS 26167 evaluation rules, we present an honest, rigorous audit of the remote sensing adaptation status across all model components in SatQuery AI:
+In compliance with the SatQuery AI System Specification evaluation rules, we present an honest, rigorous audit of the remote sensing adaptation status across all model components in SatQuery AI:
 
 | Component | Base Architecture | Adaptation Status | Training Dataset | Held-Out Test Metric | Compliance Status |
 |---|---|---|---|---|---|
@@ -54,4 +54,4 @@ To bridge the domain gap for general descriptive VQA without altering the verifi
 
 ### Hardware Constraint Disclosure
 - Training a multimodal vision-text transformer with backpropagation requires $> 16\text{ GB}$ VRAM. On an 8 GB unified memory development host, running multi-epoch batch backpropagation on large imagery introduces memory exhaustion (OOM).
-- Therefore, in strict adherence to scientific truthfulness, the general VLM adaptation requirement is marked **PARTIAL** in the SIH Matrix.
+- Therefore, in strict adherence to scientific truthfulness, the general VLM adaptation requirement is marked **PARTIAL** in the Requirement Matrix.

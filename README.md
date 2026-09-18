@@ -1,8 +1,9 @@
 # SatQuery AI
 
-**SIH 2026 · Problem Statement PS-26167**
+**AI-Powered Satellite Image Analysis System**
 
-SatQuery is an AI-powered satellite image analysis system that converts natural-language questions about satellite imagery into structured, evidence-gated geospatial intelligence. It targets earth-observation workflows for flood mapping, urban change detection, land-cover classification, and multi-sensor optical+SAR fusion.
+SatQuery AI is an intelligent satellite image analysis system that converts natural-language questions about satellite imagery into structured, evidence-gated geospatial intelligence. It targets earth-observation workflows for flood mapping, urban change detection, land-cover classification, and multi-sensor optical+SAR fusion.
+
 
 ---
 
@@ -299,11 +300,10 @@ python scripts/acquire_stage8_6_dataset.py
 
 ---
 
-## Attribution
-
-SatQuery AI was developed for the **Smart India Hackathon 2026**, Problem Statement **PS-26167**.
+## Attribution & Image Sources
 
 Demo mission images are sourced from NASA Earth Observatory and ESA Copernicus — attribution details in [`public/missions/PROVENANCE.md`](public/missions/PROVENANCE.md).
+
 
 ---
 

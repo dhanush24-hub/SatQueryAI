@@ -1,6 +1,6 @@
 # Supported Input Domain Specification
 
-**SatQuery AI — Problem Statement 26167**
+**SatQuery AI — System Specification**
 
 This document establishes the verified operating envelope for SatQuery's optical satellite image analysis and change intelligence pipeline.
 

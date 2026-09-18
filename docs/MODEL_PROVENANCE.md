@@ -1,6 +1,6 @@
 # Model Provenance & Registry Specification
 
-**Project:** SatQuery AI — Team Alpha Logic (SIH 2026 / PS 26167)  
+**Project:** SatQuery AI — SatQuery AI Team (SatQuery AI / SatQuery AI Specification)  
 **Document Version:** 1.0.0  
 **Phase:** Prompt 3 (Single-Image VQA & Grounding)
 
@@ -142,7 +142,7 @@ low recall on this specific dataset split at the standard threshold.
 **Prior erroneous summary claim:** Precision=0.72, F1=0.7059 — these numbers
 were not present in any saved file and have been retracted.
 
-**Compliance:** Per PS 26167 requirements, the system uses a "defensible
+**Compliance:** Per SatQuery AI Specification requirements, the system uses a "defensible
 analytical method" (CVA) as its primary change detection path. The SiamUNet
 checkpoint is documented as a "real model trained on LEVIR-CD256" with explicit
 performance limitations disclosed in the API response metadata.

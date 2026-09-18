@@ -12,7 +12,8 @@ def compute_pixel_area_m2(
     """
     Computes genuine physical ground area of a single raster pixel in square meters.
     Strictly handles both projected (metric) and geographic (ellipsoidal degrees) CRS.
-    Never treats degrees squared as square meters per SIH PS 26167 rules.
+    Never treats degrees squared as square meters per geospatial accuracy standards.
+
     """
     # 1. If affine transform is provided [a, b, c, d, e, f] where a = dx, e = dy (negative)
     dx = abs(affine_transform[0]) if affine_transform and len(affine_transform) >= 6 else (resolution or 10.0)

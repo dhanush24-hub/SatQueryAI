@@ -1,6 +1,6 @@
 # Pre-Prompt-6 Scientific Verification Report
 
-**Project:** SatQuery AI — Team Alpha Logic (SIH 2026 / PS 26167)
+**Project:** SatQuery AI — SatQuery AI Team (SatQuery AI / SatQuery AI Specification)
 **Report Date:** 2026-09-09
 **Verification Phase:** Prompt 5.5 — Bi-temporal pipeline audit before Optical+SAR fusion
 **Overall Gate Status: CONDITIONAL PASS — see Section 2 corrective actions**
@@ -96,7 +96,7 @@ mismatched preprocessing.
    evaluated public split (HZDR internal training split differs from ericyu split).
 4. No false accuracy claims are made in any API response.
 
-PS 26167 compliance: The requirement is "real model or defensible analytical
+SatQuery AI Specification compliance: The requirement is "real model or defensible analytical
 method." CVA satisfies the analytical method criterion. SiamUNet satisfies
 "real model" (trained on LEVIR-CD256) but has documented performance limitations.
 

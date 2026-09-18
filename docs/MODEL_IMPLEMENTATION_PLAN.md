@@ -1,6 +1,6 @@
 # Model Implementation Plan: Single-Image Remote-Sensing VQA & Grounding
 
-**Project:** SatQuery AI — Team Alpha Logic (SIH 2026 / Problem Statement 26167)  
+**Project:** SatQuery AI — SatQuery AI Team (SatQuery AI System Architecture)  
 **Phase:** Prompt 3 of 8 (Single-Image VQA + Grounding Vertical Slice)  
 **Date:** September 2026
 

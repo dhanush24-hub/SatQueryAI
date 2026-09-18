@@ -88,7 +88,8 @@ class ResultIntegrator:
             vqa_assessment = self.evidence_assessor.assess_vqa_evidence(vqa_out, asset_id)
             warnings.extend(vqa_out.warnings)
             warnings.append(
-                "Confidence is reported as null: Autoregressive VLM generation logits are uncalibrated per SIH PS 26167 rules."
+                "Confidence is reported as null: Autoregressive VLM generation logits are uncalibrated per zero-fabrication rules."
+
             )
             assessment = vqa_assessment
             findings_items.append(

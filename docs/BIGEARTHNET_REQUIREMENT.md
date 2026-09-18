@@ -1,14 +1,14 @@
-# SIH PS 26167: BigEarthNet.txt Requirement Verification
+# SatQuery AI System Specification: BigEarthNet.txt Requirement Verification
 
-**Project:** SatQuery AI (Team Alpha Logic)  
-**Problem Statement:** ISRO / SIH 2026 — PS 26167  
+**Project:** SatQuery AI (SatQuery AI Team)  
+**Problem Statement:** ISRO / SatQuery AI — SatQuery AI Specification  
 **Evaluation Scope:** Remote Sensing Vision-Language Adaptation & Multi-Sensor Benchmark Compliance
 
 ---
 
 ## 1. Exact Requirement from Source-of-Truth
 
-The Smart India Hackathon (SIH 2026) Problem Statement **PS 26167: Intelligent Remote Sensing Analysis and Visual Question Answering** establishes the following requirements regarding data, models, and domain adaptation:
+The SatQuery AI (SatQuery AI) Problem Statement **SatQuery AI Specification: Intelligent Remote Sensing Analysis and Visual Question Answering** establishes the following requirements regarding data, models, and domain adaptation:
 
 1. **BigEarthNet.txt / Benchmark Datasets:**
    - The system must support real Earth Observation (EO) benchmarks. Specifically, **BigEarthNet.txt** (the multi-sensor image-text extension of BigEarthNet v2.0 / reBEN curated by TU Berlin BIFOLD/RSiM) is the reference multi-sensor vision-language benchmark for satellite patch reasoning.
@@ -40,7 +40,7 @@ The Smart India Hackathon (SIH 2026) Problem Statement **PS 26167: Intelligent R
 | **Optical + SAR Fusion** | `OpticalSarFusionAdapter` dual-specialist evidence reasoning | `optical_sar_fusion.py`, surfaces agreement & disagreement |
 | **Cross-Modal Alignment Gate** | Normalized Mutual Information (NMI) + Sobel structural edge correlation | `cross_modal_alignment.py` (suppresses fusion on POOR) |
 | **VQA & Grounding Models** | `Salesforce/blip-vqa-base` and `google/owlvit-base-patch32` | Operating zero-shot on RGB without RS adaptation |
-| **RS Adaptation Status** | Marked **PARTIAL** in `docs/SIH_REQUIREMENT_MATRIX.md` | Training script exists (`train_rs_vlm_lora.py`), but no trained checkpoint |
+| **RS Adaptation Status** | Marked **PARTIAL** in `docs/REQUIREMENT_MATRIX.md` | Training script exists (`train_rs_vlm_lora.py`), but no trained checkpoint |
 
 ---
 

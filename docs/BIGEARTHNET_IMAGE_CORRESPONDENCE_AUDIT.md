@@ -2,7 +2,7 @@
 
 **Audit Date:** 2026-09-10  
 **Evaluator:** SatQuery AI Engineering Audit  
-**Compliance Target:** Smart India Hackathon PS 26167 / Prompt 8.5B  
+**Compliance Target:** SatQuery AI SatQuery AI Specification / Prompt 8.5B  
 
 ---
 

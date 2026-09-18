@@ -1,5 +1,5 @@
 # SatQuery AI — Current State Prototype Audit
-**Project:** SatQuery AI (Team Alpha Logic — SIH 2026 / Problem Statement 26167)  
+**Project:** SatQuery AI (SatQuery AI System Architecture)  
 **Date:** September 2026  
 **Audit Scope:** Repository Architecture, Frontend, Backend, APIs, Data Handling, and Model Implementations
 

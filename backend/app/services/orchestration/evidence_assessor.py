@@ -154,7 +154,7 @@ class EvidenceAssessor:
         quality_flags: List[str] = []
         limitations: List[str] = [
             "Generic foundation VLM checkpoint (Salesforce/blip-vqa-base) without BigEarthNet RS adaptation",
-            "Autoregressive generation logits are uncalibrated per SIH PS 26167 rules",
+            "Autoregressive generation logits are uncalibrated per zero-fabrication calibration rules",
             "Visual question answer generated without independent spatial verification"
         ]
 
@@ -194,7 +194,7 @@ class EvidenceAssessor:
         quality_flags: List[str] = [f"VERDICT_{verdict}"]
         limitations: List[str] = [
             "Bi-temporal difference model identifies binary surface changes, not multi-class semantic categories",
-            "Change probability logit outputs are uncalibrated per SIH PS 26167 rules"
+            "Change probability logit outputs are uncalibrated per zero-fabrication calibration rules"
         ]
 
         if reg.get("quality_status") == "POOR":

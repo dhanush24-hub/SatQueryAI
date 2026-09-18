@@ -106,7 +106,7 @@ def test_analysis_with_invalid_asset_id():
 
 
 def test_sar_modality_rejection():
-    """Optical specialists must explicitly reject SAR imagery with MODEL_UNAVAILABLE per SIH PS rules."""
+    """Optical specialists must explicitly reject SAR imagery with MODEL_UNAVAILABLE per modality rules."""
     sar_asset = ImageAsset(
         id="sar_test_asset_01",
         filename="sar_test_asset_01.tif",
@@ -170,7 +170,7 @@ class MockVqaAdapter(ModelAdapter):
             device="cpu",
             inference_latency_ms=45.0,
             confidence=None,
-            warnings=["Confidence null: Autoregressive VLM generation logits are uncalibrated per SIH PS 26167 rules."]
+            warnings=["Confidence null: Autoregressive VLM generation logits are uncalibrated per zero-fabrication rules."]
         )
 
 
@@ -252,7 +252,7 @@ def test_vqa_execution_flow():
     assert data["status"] == AnalysisStatus.COMPLETED
     assert data["task"] == TaskFamily.SINGLE_VQA
     assert "agricultural" in data["answer"]
-    # SIH non-negotiable rule: uncalibrated generation logits must return confidence null
+    # Non-negotiable rule: uncalibrated generation logits must return confidence null
     assert data["confidence"] is None
     assert len(data["warnings"]) >= 1
     assert len(data["execution_summary"]) == 1

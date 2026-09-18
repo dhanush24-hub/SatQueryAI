@@ -1,6 +1,6 @@
-# SIH PS 26167: Final Requirement Traceability Matrix
+# SatQuery AI System Specification: Final Requirement Traceability Matrix
 
-This document provides the definitive verification matrix for SatQuery AI against the problem statement **PS 26167: Intelligent Remote Sensing Analysis and Visual Question Answering**.
+This document provides the definitive verification matrix for SatQuery AI against the problem statement **SatQuery AI Specification: Intelligent Remote Sensing Analysis and Visual Question Answering**.
 
 Every requirement is audited against concrete implementation files, verifiable empirical evidence, automated tests, and honest production status.
 

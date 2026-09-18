@@ -87,7 +87,8 @@ def run_scenario(name: str, description: str, func):
 
 def main():
     print("=" * 75)
-    print("SatQuery AI — Prompt 8 / SIH PS 26167 Final End-to-End System Validation")
+    print("SatQuery AI — Final End-to-End System Validation")
+
     print("10 Mandatory Real-World Scenarios (A through J)")
     print("=" * 75)
 
