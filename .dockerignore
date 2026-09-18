@@ -1,0 +1,31 @@
+# =============================================================
+# SatQuery AI — Dockerignore
+# =============================================================
+
+.git
+.venv
+venv
+node_modules
+.next
+.vinext
+dist
+build
+storage/*.pdf
+storage/*.db
+storage/satquery.db*
+storage/rasters/
+storage/previews/
+storage/masks/
+storage/img_*
+storage/change_mask_*
+lint-report
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+.mypy_cache
+.oxlintrc.json
+.oxfmtrc.json
+.env
+.env.*
+!.env.example
