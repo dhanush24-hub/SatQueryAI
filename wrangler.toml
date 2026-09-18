@@ -1,0 +1,34 @@
+# SatQuery AI — Cloudflare Workers Deployment
+#
+# This project uses Vinext (vinext.dev) — a framework that runs Next.js
+# App Router apps on Cloudflare Workers via Vite.
+#
+# Build output:
+#   dist/client/   → static assets (served by Cloudflare Pages CDN)
+#   dist/server/   → Cloudflare Worker (index.js + wrangler.json)
+#
+# To deploy to Cloudflare Pages:
+#   1. Go to https://dash.cloudflare.com → Workers & Pages → Create → Pages
+#   2. Connect GitHub repo: dhanush24-hub/SatQueryAI
+#   3. Framework preset: None
+#   4. Build command:        npm run build
+#   5. Output directory:     dist/client
+#   6. Environment vars:
+#        NODE_VERSION=22
+#        NEXT_PUBLIC_API_URL=https://your-render-backend.onrender.com
+#
+# NOTE: Vercel is NOT supported — the app requires Cloudflare Workers runtime
+# for server-side API routes (/api/plan, /api/analyze).
+
+[build]
+command = "npm run build"
+
+[build.environment]
+NODE_VERSION = "22"
+
+[[workers]]
+name = "sites-project"
+main = "dist/server/index.js"
+compatibility_date = "2026-05-15"
+compatibility_flags = ["nodejs_compat"]
+assets = { directory = "dist/client" }

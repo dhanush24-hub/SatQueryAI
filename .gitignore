@@ -181,3 +181,6 @@ lightning_logs/
 # ---------------------------
 walkthrough.md
 *.tsbuildinfo
+
+# next.config.ts is a vinext compatibility shim — not standard Next.js
+next.config.ts
